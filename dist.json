@@ -1,0 +1,4196 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Agency",
+    "description": "Manage Agency Information ",
+    "version": "0.0.1",
+    "x-ibm-name": "agency",
+    "x-ibm-summary": "Manage Agency Information "
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "security": [
+    {
+      "clientIdHeader": []
+    }
+  ],
+  "paths": {
+    "/agencies/{did}/transactions": {
+      "get": {
+        "tags": [
+          "agency"
+        ],
+        "summary": "Fetch an agency by ID",
+        "description": "Fetch an agency by Id",
+        "operationId": "retrieveAgencyTransactions",
+        "parameters": [
+          {
+            "name": "X-IBM-Client-Id",
+            "in": "header",
+            "description": "Unique System Identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authentication Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "did",
+            "in": "path",
+            "description": "Agency UID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-IBM-Client-Secret",
+            "in": "header",
+            "description": "Client Secret",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgencyWithTransactions"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnAuthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agencies/{did}/events/close": {
+      "post": {
+        "tags": [
+          "agency:events"
+        ],
+        "summary": "Close an agency in TARS",
+        "description": "Close an agency in TARS",
+        "operationId": "closeAgency",
+        "parameters": [
+          {
+            "name": "X-IBM-Client-Id",
+            "in": "header",
+            "description": "Unique System Identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authentication Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "did",
+            "in": "path",
+            "description": "Agency UID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-IBM-Client-Secret",
+            "in": "header",
+            "description": "Client Secret",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnAuthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agencies/{did}/events/unarchive": {
+      "post": {
+        "tags": [
+          "agency:events"
+        ],
+        "summary": "Unarchive an agency in TARS",
+        "description": "Unarchive an agency in TARS",
+        "operationId": "unarchiveAgency",
+        "parameters": [
+          {
+            "name": "X-IBM-Client-Id",
+            "in": "header",
+            "description": "Unique System Identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authentication Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "did",
+            "in": "path",
+            "description": "Agency UID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-IBM-Client-Secret",
+            "in": "header",
+            "description": "Client Secret",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnAuthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agencies/{did}/events/archive": {
+      "post": {
+        "tags": [
+          "agency:events"
+        ],
+        "summary": "Archive an agency in TARS",
+        "description": "Archive an agency in TARS",
+        "operationId": "archiveAgency",
+        "parameters": [
+          {
+            "name": "X-IBM-Client-Id",
+            "in": "header",
+            "description": "Unique System Identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authentication Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "did",
+            "in": "path",
+            "description": "Agency UID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-IBM-Client-Secret",
+            "in": "header",
+            "description": "Client Secret",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnAuthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agencies/{did}/details": {
+      "get": {
+        "tags": [
+          "agency"
+        ],
+        "summary": "Fetch an agency in TARS",
+        "description": "Fetch an agency in TARS",
+        "operationId": "retrieveAgencyDetails",
+        "parameters": [
+          {
+            "name": "X-IBM-Client-Id",
+            "in": "header",
+            "description": "Unique System Identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authentication Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "did",
+            "in": "path",
+            "description": "Agency UID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-IBM-Client-Secret",
+            "in": "header",
+            "description": "Client Secret",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgencyWithDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnAuthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agencies/{did}": {
+      "get": {
+        "tags": [
+          "agency"
+        ],
+        "summary": "Fetch an agency in TARS",
+        "description": "Fetch an agency in TARS",
+        "operationId": "retrieveAgencyMasters",
+        "parameters": [
+          {
+            "name": "X-IBM-Client-Id",
+            "in": "header",
+            "description": "Unique System Identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authentication Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "did",
+            "in": "path",
+            "description": "Agency UID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-IBM-Client-Secret",
+            "in": "header",
+            "description": "Client Secret",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Agency"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnAuthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "agency"
+        ],
+        "summary": "Delete an agency from TARS",
+        "description": "Delete an agency from TARS",
+        "operationId": "deleteAgency",
+        "parameters": [
+          {
+            "name": "X-IBM-Client-Id",
+            "in": "header",
+            "description": "Unique System Identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authentication Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "did",
+            "in": "path",
+            "description": "Agency UID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-IBM-Client-Secret",
+            "in": "header",
+            "description": "Client Secret",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnAuthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "agency"
+        ],
+        "summary": "Update an agency in TARS",
+        "description": "Update an agency in TARS",
+        "operationId": "updateAgency",
+        "parameters": [
+          {
+            "name": "X-IBM-Client-Id",
+            "in": "header",
+            "description": "Unique System Identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authentication Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "did",
+            "in": "path",
+            "description": "Agency UID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-IBM-Client-Secret",
+            "in": "header",
+            "description": "Client Secret",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Agency"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Agency"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnAuthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "updateAgency"
+      }
+    },
+    "/agencies/{did}/contacts": {
+      "put": {
+        "tags": [
+          "agency"
+        ],
+        "summary": "Update agency details",
+        "operationId": "updateAgencyContacts",
+        "parameters": [
+          {
+            "name": "X-IBM-Client-Id",
+            "in": "header",
+            "description": "Unique System Identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authentication Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "did",
+            "in": "path",
+            "description": "Agency UID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-IBM-Client-Secret",
+            "in": "header",
+            "description": "Client Secret",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contact"
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contact"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnAuthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "requestBody"
+      }
+    },
+    "/agencies/sim-status": {
+      "post": {
+        "tags": [
+          "agency"
+        ],
+        "summary": "Update newly created/existing organizations sim card received status",
+        "operationId": "updateSimStatus",
+        "parameters": [
+          {
+            "name": "X-IBM-Client-Id",
+            "in": "header",
+            "description": "Unique System Identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authentication Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-IBM-Client-Secret",
+            "in": "header",
+            "description": "Client Secret",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SimCard"
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/SimCardResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnAuthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "requestBody"
+      }
+    },
+    "/agencies/{agencyDid}/branches": {
+      "get": {
+        "tags": [
+          "agency:group"
+        ],
+        "summary": "Get a list of branches",
+        "description": "Get a list of branches",
+        "operationId": "listBranches",
+        "parameters": [
+          {
+            "name": "X-IBM-Client-Id",
+            "in": "header",
+            "description": "Unique System Identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authentication Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "agencyDid",
+            "in": "path",
+            "description": "Agency UID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-IBM-Client-Secret",
+            "in": "header",
+            "description": "Client Secret",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AgencyHeader"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnAuthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agencies/{agencyDid}/branches/{branchDid}": {
+      "get": {
+        "tags": [
+          "agency:group"
+        ],
+        "summary": "Get a Branch by ID",
+        "description": "Get a Branch by ID",
+        "operationId": "getBranch",
+        "parameters": [
+          {
+            "name": "X-IBM-Client-Id",
+            "in": "header",
+            "description": "Unique System Identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authentication Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "agencyDid",
+            "in": "path",
+            "description": "Agency UID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "branchDid",
+            "in": "path",
+            "description": "Agency UID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-IBM-Client-Secret",
+            "in": "header",
+            "description": "Client Secret",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Agency"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnAuthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agencies/{agencyDid}/branches/{branchDid}/events/unlink": {
+      "post": {
+        "tags": [
+          "agency:group:workflow"
+        ],
+        "summary": "Request for unlinking a branch agency",
+        "description": "Request for unlinking a branch agency",
+        "operationId": "unLinkAgencyBranch",
+        "parameters": [
+          {
+            "name": "X-IBM-Client-Id",
+            "in": "header",
+            "description": "Unique System Identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authentication Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "agencyDid",
+            "in": "path",
+            "description": "Agency UID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-IBM-Client-Secret",
+            "in": "header",
+            "description": "Client Secret",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "branchDid",
+            "in": "path",
+            "description": "Branch DID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Client Secret",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AgencyGroupRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Agency"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnAuthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "request"
+      }
+    },
+    "/agencies/{agencyDid}/branches/{branchDid}/events/link": {
+      "post": {
+        "tags": [
+          "agency:group:workflow"
+        ],
+        "summary": "Request for linking a branch agency",
+        "description": "Request for linking a branch agency",
+        "operationId": "linkAgencyBranch",
+        "parameters": [
+          {
+            "name": "X-IBM-Client-Id",
+            "in": "header",
+            "description": "Unique System Identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authentication Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "agencyDid",
+            "in": "path",
+            "description": "Agency UID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-IBM-Client-Secret",
+            "in": "header",
+            "description": "Client Secret",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "branchDid",
+            "in": "path",
+            "description": "Branch DID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Client Secret",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AgencyGroupRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Agency"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnAuthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "request"
+      }
+    },
+    "/agencies/{agencyDid}/events/block": {
+      "post": {
+        "tags": [
+          "agency"
+        ],
+        "summary": "Block agency",
+        "description": "Block agency",
+        "operationId": "blockAgency",
+        "parameters": [
+          {
+            "name": "X-IBM-Client-Id",
+            "in": "header",
+            "description": "Unique System Identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authentication Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "agencyDid",
+            "in": "path",
+            "description": "Agency UID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-IBM-Client-Secret",
+            "in": "header",
+            "description": "Client Secret",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AgencyRemarks"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnAuthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "request"
+      }
+    },
+    "/agencies/{agencyDid}/events/unblock": {
+      "post": {
+        "tags": [
+          "agency"
+        ],
+        "summary": "Unblock agency",
+        "description": "Unblock agency",
+        "operationId": "unblockAgency",
+        "parameters": [
+          {
+            "name": "X-IBM-Client-Id",
+            "in": "header",
+            "description": "Unique System Identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authentication Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "agencyDid",
+            "in": "path",
+            "description": "Agency UID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-IBM-Client-Secret",
+            "in": "header",
+            "description": "Client Secret",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AgencyRemarks"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnAuthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "request"
+      }
+    },
+    "/agencies/{did}/events/sync": {
+      "post": {
+        "tags": [
+          "agency"
+        ],
+        "summary": "Update agency details by sync",
+        "description": "Update agency details by sync",
+        "operationId": "updateAgencySyncByDid",
+        "parameters": [
+          {
+            "name": "X-IBM-Client-Id",
+            "in": "header",
+            "description": "Unique System Identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authentication Token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "did",
+            "in": "path",
+            "description": "Agency ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-IBM-Client-Secret",
+            "in": "header",
+            "description": "Client Secret",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgencyWithDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UnAuthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "TARS": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://$(catalog.url)/tars/oauth2/token",
+            "scopes": {
+              "api:tars": "Access to TARS APIs"
+            }
+          }
+        },
+        "x-ibm-oauth-provider": "tars"
+      },
+      "clientIdHeader": {
+        "type": "apiKey",
+        "name": "X-IBM-Client-Id",
+        "in": "header"
+      }
+    },
+    "schemas": {
+      "MultiLang": {
+        "type": "object",
+        "properties": {
+          "en": {
+            "type": "string",
+            "description": "English",
+            "example": "English"
+          },
+          "ar": {
+            "type": "string",
+            "description": "Arabic",
+            "example": "عربي"
+          }
+        },
+        "description": "Name in Arabic and English"
+      },
+      "AgencyHeader": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique Identifier for the Agency",
+            "format": "int64",
+            "example": 1
+          },
+          "did": {
+            "type": "string",
+            "description": "Decentralized Identifier for the Agency",
+            "example": "did:ded:1210141"
+          },
+          "source": {
+            "type": "string",
+            "description": "Source for the Decentralized ID",
+            "example": "ded"
+          },
+          "sourceKey": {
+            "type": "string",
+            "description": "Natural Key from the Source. e.g. Trade License Number",
+            "example": "1210141"
+          },
+          "versionHash": {
+            "type": "string",
+            "description": "Hash of all trackable attributes",
+            "example": "2fdc0177057d3a5c6c2c0821e01f4fa8d90f9a3bb7afd82b0db526af98d68de8"
+          },
+          "name": {
+            "$ref": "#/components/schemas/MultiLang"
+          },
+          "chainName": {
+            "$ref": "#/components/schemas/MultiLang"
+          },
+          "tradeLicenseNumber": {
+            "type": "string",
+            "description": "tradeLicenseNumber ",
+            "example": "12764548"
+          }
+        },
+        "description": "Agency"
+      },
+      "TradeLicense": {
+        "type": "object",
+        "properties": {
+          "licenseNo": {
+            "type": "string",
+            "description": "Trade License Number of the Agency issued by DED",
+            "example": "456789"
+          },
+          "issuedDate": {
+            "type": "string",
+            "description": "Trade License issued date",
+            "format": "date-time"
+          },
+          "expiryDate": {
+            "type": "string",
+            "description": "Trade License expiry date",
+            "format": "date-time"
+          }
+        },
+        "description": "Trade License issued by DED"
+      },
+      "AgencyTransaction": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "description": "Kind of Transaction",
+            "example": "REGULATORY_REVIEW"
+          },
+          "remarks": {
+            "type": "string",
+            "description": "Remarks",
+            "example": "Good"
+          },
+          "details": {
+            "type": "object",
+            "properties": {
+              "meetingPlace": {
+                "type": "string",
+                "description": "Data stored by consumer for the workflow step",
+                "example": "Jebel Ali Police Station"
+              }
+            }
+          },
+          "createdBy": {
+            "type": "string",
+            "description": "Created By",
+            "readOnly": true,
+            "example": "john.doe"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Created Timestamp",
+            "format": "date-time",
+            "readOnly": true,
+            "example": "2020-06-01T12:30:30Z"
+          }
+        },
+        "description": "Permit issued by RTA"
+      },
+      "AgencyWithTransactions": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique Identifier for the Agency. Autogenerated, not supplied by the consumer.",
+            "format": "int64",
+            "readOnly": true,
+            "example": 1
+          },
+          "did": {
+            "type": "string",
+            "description": "Decentralized Identifier for the Agency",
+            "readOnly": true,
+            "example": "did:rta:1021252"
+          },
+          "source": {
+            "type": "string",
+            "description": "Source for the Decentralized ID",
+            "readOnly": true,
+            "example": "rta"
+          },
+          "sourceKey": {
+            "type": "string",
+            "description": "Natural Key from the Source",
+            "readOnly": true,
+            "example": "1021252"
+          },
+          "versionHash": {
+            "type": "string",
+            "description": "Hash of all trackable attributes",
+            "readOnly": true,
+            "example": "2fdc0177057d3a5c6c2c0821e01f4fa8d90f9a3bb7afd82b0db526af98d68de8"
+          },
+          "name": {
+            "$ref": "#/components/schemas/MultiLang"
+          },
+          "chainName": {
+            "$ref": "#/components/schemas/MultiLang"
+          },
+          "parent": {
+            "$ref": "#/components/schemas/AgencyHeader"
+          },
+          "trafficFileNumber": {
+            "type": "string",
+            "description": "Traffic File Number of the Agency issued by RTA",
+            "example": "12345678"
+          },
+          "tradeLicense": {
+            "$ref": "#/components/schemas/TradeLicense"
+          },
+          "category": {
+            "type": "string",
+            "description": "Category of the Agency",
+            "example": "A",
+            "enum": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          },
+          "imageUrl": {
+            "type": "string",
+            "description": "Image URL",
+            "example": "/agencies/did:rta:1021252/7c96c336f65e2.png"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the Agency",
+            "example": "ACTIVE",
+            "enum": [
+              "ACTIVE",
+              "INACTIVE",
+              "ARCHIVED"
+            ]
+          },
+          "isActive": {
+            "type": "boolean",
+            "description": "Check with Agency is Active",
+            "example": true
+          },
+          "isArchived": {
+            "type": "boolean",
+            "description": "Check with Agency is Archived",
+            "example": true
+          },
+          "createdBy": {
+            "type": "string",
+            "description": "Audit Field - Created By",
+            "example": "tars"
+          },
+          "updatedBy": {
+            "type": "string",
+            "description": "Audit Field - Updated By",
+            "example": "tars"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Audit Field - Created Timestamp",
+            "format": "date-time",
+            "example": "2020-04-04T16:04:04Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "Audit Field - Updated Timestamp",
+            "format": "date-time",
+            "example": "2020-04-04T16:04:04Z"
+          },
+          "transactions": {
+            "type": "array",
+            "description": "Permit issued by RTA",
+            "items": {
+              "$ref": "#/components/schemas/AgencyTransaction"
+            }
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "httpCode": {
+            "type": "string",
+            "description": "Error code"
+          },
+          "httpMessage": {
+            "type": "string",
+            "description": "Error description"
+          },
+          "moreInformation": {
+            "type": "string",
+            "description": "Detailed error description"
+          }
+        }
+      },
+      "LanguageMapper": {
+        "type": "object",
+        "properties": {
+          "en": {
+            "type": "string",
+            "description": "Name in English",
+            "example": "English"
+          },
+          "ar": {
+            "type": "string",
+            "description": "Name in Arabic",
+            "example": "عربي"
+          }
+        }
+      },
+      "AgencyOrganization": {
+        "type": "object",
+        "properties": {
+          "licenseType": {
+            "$ref": "#/components/schemas/LanguageMapper"
+          },
+          "legalType": {
+            "$ref": "#/components/schemas/LanguageMapper"
+          },
+          "classDescription": {
+            "$ref": "#/components/schemas/LanguageMapper"
+          },
+          "representedBy": {
+            "$ref": "#/components/schemas/LanguageMapper"
+          },
+          "issuedDate": {
+            "type": "string",
+            "description": "Permit Number of the Agency issued by RTA",
+            "format": "date-time"
+          },
+          "expriyDate": {
+            "type": "string",
+            "description": "Permit Number of the Agency issued by RTA",
+            "format": "date-time"
+          }
+        },
+        "description": "Permit issued by RTA"
+      },
+      "AgencyPermit": {
+        "type": "object",
+        "properties": {
+          "permitNo": {
+            "type": "string",
+            "description": "Permit Number of the Agency issued by RTA",
+            "example": "12345678"
+          },
+          "reference": {
+            "type": "string",
+            "description": "Traffic Number related to the permit",
+            "example": "12345678"
+          },
+          "issuedDate": {
+            "type": "string",
+            "description": "Permit Issued Date",
+            "format": "date-time"
+          },
+          "expiryDate": {
+            "type": "string",
+            "description": "Permit Expiry Date",
+            "format": "date-time"
+          },
+          "authorityName": {
+            "$ref": "#/components/schemas/LanguageMapper"
+          },
+          "owners": {
+            "type": "array",
+            "description": "List of Permit Owners",
+            "items": {
+              "type": "string",
+              "description": "List of Permit Owners"
+            }
+          },
+          "managers": {
+            "type": "array",
+            "description": "List of Permit Managers",
+            "items": {
+              "type": "string",
+              "description": "List of Permit Managers"
+            }
+          }
+        },
+        "description": "Permit issued by RTA"
+      },
+      "AgencyPartner": {
+        "type": "object",
+        "properties": {
+          "partnerNo": {
+            "type": "string",
+            "description": "Partner Number",
+            "example": "10088"
+          },
+          "name": {
+            "$ref": "#/components/schemas/LanguageMapper"
+          },
+          "emiratesId": {
+            "type": "string",
+            "description": "Emirtates ID",
+            "example": "1122646554"
+          },
+          "passportNumber": {
+            "type": "string",
+            "description": "Passport Number",
+            "example": "791234567"
+          },
+          "nationality": {
+            "type": "string",
+            "description": "Nationality of the Partner",
+            "example": "United Kingdom"
+          },
+          "birthDate": {
+            "type": "string",
+            "description": "Date of Birth",
+            "example": "1959-05-23"
+          },
+          "personCategory": {
+            "type": "string",
+            "description": "Category of the Person",
+            "example": "Person"
+          },
+          "legalType": {
+            "type": "string",
+            "description": "Legal Type of the Partner",
+            "example": "Partner"
+          },
+          "percentOwnership": {
+            "type": "integer",
+            "description": "Ownership Percentage",
+            "format": "int32",
+            "example": 100
+          },
+          "residenceNumber": {
+            "type": "string",
+            "description": "Residence Number",
+            "example": "100"
+          },
+          "effectiveStartDate": {
+            "type": "string",
+            "description": "Effective Start Date",
+            "format": "date-time"
+          },
+          "effectiveEndDate": {
+            "type": "string",
+            "description": "Effective End Date",
+            "format": "date-time"
+          }
+        },
+        "description": "List of Partners in the Agency"
+      },
+      "CodeName": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Code"
+          },
+          "name": {
+            "$ref": "#/components/schemas/LanguageMapper"
+          }
+        },
+        "description": "Emirate"
+      },
+      "Location": {
+        "type": "object",
+        "properties": {
+          "latitude": {
+            "type": "number",
+            "description": "Latitude",
+            "format": "double",
+            "example": 25.1892807
+          },
+          "longitude": {
+            "type": "number",
+            "description": "Longitude",
+            "format": "double",
+            "example": 55.2561466
+          }
+        },
+        "description": "Geolocation"
+      },
+      "Address": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "Address Label",
+            "example": "work"
+          },
+          "address": {
+            "$ref": "#/components/schemas/MultiLang"
+          },
+          "makani": {
+            "type": "string",
+            "description": "Makani Number",
+            "example": "24330 87031"
+          },
+          "poBox": {
+            "type": "string",
+            "description": "PO Box Number",
+            "example": "9226"
+          },
+          "area": {
+            "$ref": "#/components/schemas/CodeName"
+          },
+          "subArea": {
+            "$ref": "#/components/schemas/CodeName"
+          },
+          "community": {
+            "$ref": "#/components/schemas/CodeName"
+          },
+          "unit": {
+            "$ref": "#/components/schemas/CodeName"
+          },
+          "building": {
+            "$ref": "#/components/schemas/CodeName"
+          },
+          "street": {
+            "$ref": "#/components/schemas/CodeName"
+          },
+          "city": {
+            "$ref": "#/components/schemas/CodeName"
+          },
+          "region": {
+            "$ref": "#/components/schemas/CodeName"
+          },
+          "country": {
+            "$ref": "#/components/schemas/CodeName"
+          },
+          "postalCode": {
+            "type": "string",
+            "description": "Postal Code",
+            "example": "9226"
+          },
+          "emirate": {
+            "$ref": "#/components/schemas/CodeName"
+          },
+          "geoLocation": {
+            "$ref": "#/components/schemas/Location"
+          },
+          "preferred": {
+            "type": "boolean",
+            "description": "Preferred Address Flag",
+            "example": true
+          }
+        },
+        "description": "Addresses"
+      },
+      "PhoneNoDetails": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "Phone Label",
+            "example": "work"
+          },
+          "countryCode": {
+            "type": "string",
+            "description": "Country Code",
+            "example": 971
+          },
+          "phone": {
+            "type": "string",
+            "description": "Phone",
+            "example": "43435353"
+          },
+          "extension": {
+            "type": "string",
+            "description": "Extension",
+            "example": "1234"
+          },
+          "preferred": {
+            "type": "boolean",
+            "description": "Preferred Phone Flag",
+            "example": true
+          }
+        },
+        "description": "Phones"
+      },
+      "Email": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "Email Label",
+            "example": "personal"
+          },
+          "email": {
+            "type": "string",
+            "description": "Email",
+            "example": "john.doe@example.com"
+          },
+          "preferred": {
+            "type": "boolean",
+            "description": "Preferred Email Flag",
+            "example": true
+          }
+        },
+        "description": "Emails"
+      },
+      "Contact": {
+        "type": "object",
+        "properties": {
+          "addresses": {
+            "type": "array",
+            "description": "Addresses",
+            "items": {
+              "$ref": "#/components/schemas/Address"
+            }
+          },
+          "phones": {
+            "type": "array",
+            "description": "Phones",
+            "items": {
+              "$ref": "#/components/schemas/PhoneNoDetails"
+            }
+          },
+          "emails": {
+            "type": "array",
+            "description": "Emails",
+            "items": {
+              "$ref": "#/components/schemas/Email"
+            }
+          }
+        },
+        "description": "Contacts"
+      },
+      "Attachment": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "Attachment Label",
+            "example": "passport"
+          },
+          "reference": {
+            "type": "string",
+            "description": "Attachment Reference UID",
+            "example": "did:in:2232124123"
+          },
+          "url": {
+            "type": "string",
+            "description": "Attachment URL",
+            "example": "/attachments/582342345"
+          },
+          "hash": {
+            "type": "string",
+            "description": "Attachment Hash",
+            "example": "4e76434eea3c9d9cf9cb10bbf3f4a74b"
+          }
+        },
+        "description": "Attachments"
+      },
+      "AgencyActivity": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Activity Code",
+            "example": "101"
+          },
+          "name": {
+            "$ref": "#/components/schemas/MultiLang"
+          },
+          "effectiveStartDate": {
+            "type": "string",
+            "description": "Start Date of the Activity",
+            "format": "date-time"
+          },
+          "effectiveEndDate": {
+            "type": "string",
+            "description": "End Date of the Activity",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of activity",
+            "example": "ACTIVE",
+            "enum": [
+              "ACTIVE",
+              "INACTIVE",
+              "ARCHIVED"
+            ]
+          }
+        },
+        "description": "Activity"
+      },
+      "AgencyCommerceRegistry": {
+        "type": "object",
+        "properties": {
+          "registerSerialNumber": {
+            "type": "string",
+            "description": "Agency Commerce Registry Serial Number",
+            "example": "8775"
+          },
+          "ucrNumber": {
+            "type": "string",
+            "description": "UCR Number",
+            "example": "21"
+          },
+          "commerceNumber": {
+            "type": "string",
+            "description": "Agency Commerce Number",
+            "example": "40209"
+          },
+          "companyName": {
+            "$ref": "#/components/schemas/MultiLang"
+          },
+          "mainLicenseNumber": {
+            "type": "string",
+            "description": "Agency Main License Number",
+            "example": "207765"
+          },
+          "commerceRegisterType": {
+            "type": "string",
+            "description": "Agency Commerce Registry Type",
+            "example": "Company with Commerce Registry"
+          },
+          "legalType": {
+            "type": "string",
+            "description": "Legal Type",
+            "example": "Limited Liability Company(LLC)"
+          },
+          "nationality": {
+            "type": "string",
+            "description": "Nationality",
+            "example": "United Arab Emirates"
+          },
+          "issueDate": {
+            "type": "string",
+            "description": "Issued Date",
+            "example": "1991-10-14T00:00:00+04:00"
+          },
+          "expiryDate": {
+            "type": "string",
+            "description": "Expiry Date",
+            "example": "2011-01-31T00:00:00+04:00"
+          },
+          "cancelDate": {
+            "type": "string",
+            "description": "Cancel date",
+            "example": "2011-01-31T00:00:00+04:00"
+          },
+          "paidUpCapital": {
+            "type": "string",
+            "description": "Paid Up Capital",
+            "example": "1300000"
+          },
+          "nominalCapital": {
+            "type": "string",
+            "description": "Nominal Capital",
+            "example": "1300000"
+          }
+        },
+        "description": "CommerceRegistry"
+      },
+      "AgencyDetails": {
+        "type": "object",
+        "properties": {
+          "organization": {
+            "$ref": "#/components/schemas/AgencyOrganization"
+          },
+          "permit": {
+            "$ref": "#/components/schemas/AgencyPermit"
+          },
+          "partners": {
+            "type": "array",
+            "description": "List of Partners in the Agency",
+            "items": {
+              "$ref": "#/components/schemas/AgencyPartner"
+            }
+          },
+          "contact": {
+            "$ref": "#/components/schemas/Contact"
+          },
+          "attachments": {
+            "type": "array",
+            "description": "Attachments",
+            "items": {
+              "$ref": "#/components/schemas/Attachment"
+            }
+          },
+          "activity": {
+            "type": "array",
+            "description": "Activity",
+            "items": {
+              "$ref": "#/components/schemas/AgencyActivity"
+            }
+          },
+          "commerceRegistry": {
+            "$ref": "#/components/schemas/AgencyCommerceRegistry"
+          }
+        },
+        "description": "Agency Details"
+      },
+      "AgencyWithDetails": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique Identifier for the Agency. Autogenerated, not supplied by the consumer.",
+            "format": "int64",
+            "example": 1
+          },
+          "did": {
+            "type": "string",
+            "description": "Decentralized Identifier for the Agency",
+            "example": "did:rta:1021252"
+          },
+          "source": {
+            "type": "string",
+            "description": "Source for the Decentralized ID",
+            "example": "rta"
+          },
+          "sourceKey": {
+            "type": "string",
+            "description": "Natural Key from the Source",
+            "example": "1021252"
+          },
+          "versionHash": {
+            "type": "string",
+            "description": "Hash of all trackable attributes",
+            "example": "2fdc0177057d3a5c6c2c0821e01f4fa8d90f9a3bb7afd82b0db526af98d68de8"
+          },
+          "name": {
+            "$ref": "#/components/schemas/MultiLang"
+          },
+          "chainName": {
+            "$ref": "#/components/schemas/MultiLang"
+          },
+          "parent": {
+            "$ref": "#/components/schemas/AgencyHeader"
+          },
+          "trafficFileNumber": {
+            "type": "string",
+            "description": "Traffic File Number of the Agency issued by RTA",
+            "example": "12345678"
+          },
+          "tradeLicense": {
+            "$ref": "#/components/schemas/TradeLicense"
+          },
+          "category": {
+            "type": "string",
+            "description": "Category of the Agency",
+            "example": "A",
+            "enum": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          },
+          "imageUrl": {
+            "type": "string",
+            "description": "Image URL",
+            "example": "/agencies/did:rta:1021252/7c96c336f65e2.png"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the Agency",
+            "example": "ACTIVE",
+            "enum": [
+              "ACTIVE",
+              "INACTIVE",
+              "ARCHIVED"
+            ]
+          },
+          "isActive": {
+            "type": "boolean",
+            "description": "Check with Agency is Active",
+            "example": true
+          },
+          "isArchived": {
+            "type": "boolean",
+            "description": "Check with Agency is Archived",
+            "example": true
+          },
+          "createdBy": {
+            "type": "string",
+            "description": "Audit Field - Created By",
+            "example": "tars"
+          },
+          "updatedBy": {
+            "type": "string",
+            "description": "Audit Field - Updated By",
+            "example": "tars"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Audit Field - Created Timestamp",
+            "format": "date-time",
+            "example": "2020-04-04T16:04:04Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "Audit Field - Updated Timestamp",
+            "format": "date-time",
+            "example": "2020-04-04T16:04:04Z"
+          },
+          "details": {
+            "$ref": "#/components/schemas/AgencyDetails"
+          }
+        }
+      },
+      "Agency": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique Identifier for the Agency. Autogenerated, not supplied by the consumer.",
+            "format": "int64",
+            "readOnly": true,
+            "example": 1
+          },
+          "did": {
+            "type": "string",
+            "description": "Decentralized Identifier for the Agency",
+            "readOnly": true,
+            "example": "did:rta:1021252"
+          },
+          "source": {
+            "type": "string",
+            "description": "Source for the Decentralized ID",
+            "readOnly": true,
+            "example": "rta"
+          },
+          "sourceKey": {
+            "type": "string",
+            "description": "Natural Key from the Source",
+            "readOnly": true,
+            "example": "1021252"
+          },
+          "versionHash": {
+            "type": "string",
+            "description": "Hash of all trackable attributes",
+            "readOnly": true,
+            "example": "2fdc0177057d3a5c6c2c0821e01f4fa8d90f9a3bb7afd82b0db526af98d68de8"
+          },
+          "name": {
+            "$ref": "#/components/schemas/MultiLang"
+          },
+          "chainName": {
+            "$ref": "#/components/schemas/MultiLang"
+          },
+          "parent": {
+            "$ref": "#/components/schemas/AgencyHeader"
+          },
+          "trafficFileNumber": {
+            "type": "string",
+            "description": "Traffic File Number of the Agency issued by RTA",
+            "example": "12345678"
+          },
+          "tradeLicense": {
+            "$ref": "#/components/schemas/TradeLicense"
+          },
+          "category": {
+            "type": "string",
+            "description": "Category of the Agency",
+            "example": "A",
+            "enum": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          },
+          "imageUrl": {
+            "type": "string",
+            "description": "Image URL",
+            "example": "/agencies/did:rta:1021252/7c96c336f65e2.png"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the Agency",
+            "readOnly": true,
+            "example": "ACTIVE",
+            "enum": [
+              "ACTIVE",
+              "INACTIVE",
+              "ARCHIVED"
+            ]
+          },
+          "isActive": {
+            "type": "boolean",
+            "description": "Check if Agency is Active",
+            "readOnly": true,
+            "example": true
+          },
+          "isArchived": {
+            "type": "boolean",
+            "description": "Check if Agency is Archived",
+            "readOnly": true,
+            "example": true
+          },
+          "createdBy": {
+            "type": "string",
+            "description": "Audit Field - Created By",
+            "readOnly": true,
+            "example": "tars"
+          },
+          "updatedBy": {
+            "type": "string",
+            "description": "Audit Field - Updated By",
+            "readOnly": true,
+            "example": "tars"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Audit Field - Created Timestamp",
+            "format": "date-time",
+            "readOnly": true,
+            "example": "2020-04-04T16:04:04Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "Audit Field - Updated Timestamp",
+            "format": "date-time",
+            "readOnly": true,
+            "example": "2020-04-04T16:04:04Z"
+          }
+        }
+      },
+      "SimCard": {
+        "required": [
+          "simCardReceived",
+          "tradeLicenseNo",
+          "trafficFileNo"
+        ],
+        "type": "object",
+        "properties": {
+          "trafficFileNo": {
+            "type": "string",
+            "description": "Traffic File Number"
+          },
+          "tradeLicenseNo": {
+            "type": "string",
+            "description": "Trade License Number"
+          },
+          "simCardReceived": {
+            "type": "string",
+            "description": "Sim Card Received"
+          }
+        }
+      },
+      "SimCardResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "string",
+            "description": "Status Code"
+          },
+          "statusType": {
+            "type": "string",
+            "description": "Status Type"
+          },
+          "statusDetails": {
+            "type": "string",
+            "description": "Status Details"
+          }
+        }
+      },
+      "AgencyGroupRequest": {
+        "type": "object"
+      },
+      "AgencyRemarks": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string"
+          },
+          "remarks": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "x-ibm-configuration": {
+    "gateway": "datapower-api-gateway",
+    "type": "rest",
+    "phase": "realized",
+    "enforced": true,
+    "testable": true,
+    "cors": {
+      "enabled": true
+    },
+    "assembly": {
+      "execute": [
+        {
+          "gatewayscript": {
+            "version": "2.0.0",
+            "title": "Set Client Id",
+            "source": "var apim=require('apim');\nvar id=apim.getvariable('request.headers.X-IBM-Client-Id');\napim.setvariable('message.headers.clientId',id);"
+          }
+        },
+        {
+          "invoke": {
+            "version": "2.0.0",
+            "title": "Authorize",
+            "header-control": {
+              "type": "blacklist",
+              "values": []
+            },
+            "parameter-control": {
+              "type": "whitelist",
+              "values": []
+            },
+            "timeout": 60,
+            "verb": "GET",
+            "cache-response": "protocol",
+            "cache-ttl": 900,
+            "stop-on-error": [],
+            "target-url": "$(authorization-url)",
+            "keep-payload": false
+          }
+        },
+        {
+          "switch": {
+            "version": "2.0.0",
+            "title": "switch",
+            "case": [
+              {
+                "condition": "($statusCode() != 200)",
+                "execute": [
+                  {
+                    "throw": {
+                      "version": "2.0.0",
+                      "title": "Token_Error",
+                      "name": "Token_Error"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "parse": {
+            "version": "2.0.0",
+            "title": "parse",
+            "parse-settings-reference": {
+              "default": "apic-default-parsesettings"
+            }
+          }
+        },
+        {
+          "gatewayscript": {
+            "version": "2.0.0",
+            "title": "Request",
+            "source": "var apim = require('apim');\nvar json = apim.getvariable('request.body');\nvar strtoken=JSON.stringify(json);\nvar authStr = apim.getvariable('message.headers.tempAuth');\ncontext.message.header.set('Authorization',authStr);\n\nvar id=apim.getvariable('request.headers.X-IBM-Client-Id');\ncontext.message.header.set('X-IBM-Client-Id',id);\nsession.output.write(json);"
+          }
+        },
+        {
+          "set-variable": {
+            "version": "2.0.0",
+            "title": "set-variable",
+            "actions": [
+              {
+                "clear": "message.headers.tempAuth"
+              }
+            ]
+          }
+        },
+        {
+          "switch": {
+            "version": "2.0.0",
+            "title": "switch",
+            "case": [
+              {
+                "condition": "($operationID() = 'retrieveAgencyDetails')",
+                "execute": [
+                  {
+                    "invoke": {
+                      "version": "2.0.0",
+                      "title": "Retrieve Agency",
+                      "header-control": {
+                        "type": "blacklist",
+                        "values": []
+                      },
+                      "parameter-control": {
+                        "type": "whitelist",
+                        "values": []
+                      },
+                      "timeout": 60,
+                      "verb": "keep",
+                      "cache-response": "protocol",
+                      "cache-ttl": 900,
+                      "stop-on-error": [],
+                      "target-url": "$(masters-url)/agencies/$(request.parameters.did)/details"
+                    }
+                  }
+                ]
+              },
+              {
+                "condition": "($operationID() = 'updateAgency' or $operationID() = 'retrieveAgencyMasters' or $operationID() = 'deleteAgency')",
+                "execute": [
+                  {
+                    "invoke": {
+                      "version": "2.0.0",
+                      "title": "Update Agency",
+                      "header-control": {
+                        "type": "blocklist",
+                        "values": []
+                      },
+                      "parameter-control": {
+                        "type": "allowlist",
+                        "values": []
+                      },
+                      "timeout": 60,
+                      "verb": "keep",
+                      "cache-response": "protocol",
+                      "cache-ttl": 900,
+                      "stop-on-error": [],
+                      "target-url": "$(masters-url)/agencies/$(request.parameters.did)",
+                      "persistent-connection": true
+                    }
+                  }
+                ]
+              },
+              {
+                "condition": "($operationID() = 'archiveAgency')",
+                "execute": [
+                  {
+                    "invoke": {
+                      "version": "2.0.0",
+                      "title": "Archive",
+                      "header-control": {
+                        "type": "blacklist",
+                        "values": []
+                      },
+                      "parameter-control": {
+                        "type": "whitelist",
+                        "values": []
+                      },
+                      "timeout": 60,
+                      "verb": "keep",
+                      "cache-response": "protocol",
+                      "cache-ttl": 900,
+                      "stop-on-error": [],
+                      "target-url": "$(masters-url)/agencies/$(request.parameters.did)/events/archive"
+                    }
+                  }
+                ]
+              },
+              {
+                "condition": "($operationID() = 'unarchiveAgency')",
+                "execute": [
+                  {
+                    "invoke": {
+                      "version": "2.0.0",
+                      "title": "Unarchive",
+                      "header-control": {
+                        "type": "blocklist",
+                        "values": []
+                      },
+                      "parameter-control": {
+                        "type": "allowlist",
+                        "values": []
+                      },
+                      "timeout": 60,
+                      "verb": "keep",
+                      "cache-response": "protocol",
+                      "cache-ttl": 900,
+                      "stop-on-error": [],
+                      "target-url": "$(masters-url)/agencies/$(request.parameters.did)/events/unarchive",
+                      "persistent-connection": true
+                    }
+                  }
+                ]
+              },
+              {
+                "condition": "($operationID() = 'closeAgency')",
+                "execute": [
+                  {
+                    "invoke": {
+                      "version": "2.0.0",
+                      "title": "Close",
+                      "header-control": {
+                        "type": "blacklist",
+                        "values": []
+                      },
+                      "parameter-control": {
+                        "type": "whitelist",
+                        "values": []
+                      },
+                      "timeout": 60,
+                      "verb": "keep",
+                      "cache-response": "protocol",
+                      "cache-ttl": 900,
+                      "stop-on-error": [],
+                      "target-url": "$(masters-url)/agencies/$(request.parameters.did)/events/close"
+                    }
+                  }
+                ]
+              },
+              {
+                "condition": "($operationID() = 'updateAgencyContacts')",
+                "execute": [
+                  {
+                    "invoke": {
+                      "version": "2.0.0",
+                      "title": "Update Contacts",
+                      "header-control": {
+                        "type": "blacklist",
+                        "values": []
+                      },
+                      "parameter-control": {
+                        "type": "whitelist",
+                        "values": []
+                      },
+                      "timeout": 60,
+                      "verb": "keep",
+                      "cache-response": "protocol",
+                      "cache-ttl": 900,
+                      "stop-on-error": [],
+                      "target-url": "$(masters-url)/agencies/$(request.parameters.did)/contacts"
+                    }
+                  }
+                ]
+              },
+              {
+                "condition": "($operationID() = 'retrieveAgencyTransactions')",
+                "execute": [
+                  {
+                    "invoke": {
+                      "version": "2.0.0",
+                      "title": "Agency Transactions",
+                      "header-control": {
+                        "type": "blacklist",
+                        "values": []
+                      },
+                      "parameter-control": {
+                        "type": "whitelist",
+                        "values": []
+                      },
+                      "timeout": 60,
+                      "verb": "keep",
+                      "cache-response": "protocol",
+                      "cache-ttl": 900,
+                      "stop-on-error": [],
+                      "target-url": "$(bc-url)/agencies/$(request.parameters.did)"
+                    }
+                  }
+                ]
+              },
+              {
+                "condition": "($operationID() = 'listBranches')",
+                "execute": [
+                  {
+                    "invoke": {
+                      "version": "2.0.0",
+                      "title": "Retrieve Branches",
+                      "backend-type": "detect",
+                      "header-control": {
+                        "type": "blocklist",
+                        "values": []
+                      },
+                      "parameter-control": {
+                        "type": "allowlist",
+                        "values": []
+                      },
+                      "timeout": 60,
+                      "verb": "keep",
+                      "use-http-10": false,
+                      "chunked-uploads": true,
+                      "cache-response": "protocol",
+                      "cache-ttl": 900,
+                      "stop-on-error": [],
+                      "target-url": "$(elk-url)/agencies/$(request.parameters.agencyDid)/branches"
+                    }
+                  }
+                ]
+              },
+              {
+                "condition": "($operationID() = 'getBranch')",
+                "execute": [
+                  {
+                    "invoke": {
+                      "version": "2.0.0",
+                      "title": "Update Branches",
+                      "backend-type": "detect",
+                      "header-control": {
+                        "type": "blocklist",
+                        "values": []
+                      },
+                      "parameter-control": {
+                        "type": "allowlist",
+                        "values": []
+                      },
+                      "timeout": 60,
+                      "verb": "keep",
+                      "use-http-10": false,
+                      "chunked-uploads": true,
+                      "cache-response": "protocol",
+                      "cache-ttl": 900,
+                      "stop-on-error": [],
+                      "target-url": "$(bc-url)/agencies/$(request.parameters.agencyDid)/branches/$(request.parameters.branchDid)"
+                    }
+                  }
+                ]
+              },
+              {
+                "condition": "($operationID() = 'linkAgencyBranch')",
+                "execute": [
+                  {
+                    "invoke": {
+                      "version": "2.0.0",
+                      "title": "LinkAgency Branch",
+                      "backend-type": "detect",
+                      "header-control": {
+                        "type": "blocklist",
+                        "values": []
+                      },
+                      "parameter-control": {
+                        "type": "allowlist",
+                        "values": []
+                      },
+                      "timeout": 60,
+                      "verb": "keep",
+                      "use-http-10": false,
+                      "chunked-uploads": true,
+                      "cache-response": "protocol",
+                      "cache-ttl": 900,
+                      "stop-on-error": [],
+                      "target-url": "$(bc-url)/agencies/$(request.parameters.agencyDid)/branches/$(request.parameters.branchDid)/events/link"
+                    }
+                  }
+                ]
+              },
+              {
+                "condition": "($operationID() = 'unLinkAgencyBranch')",
+                "execute": [
+                  {
+                    "invoke": {
+                      "version": "2.0.0",
+                      "title": "Unlink Agency Branch",
+                      "backend-type": "detect",
+                      "header-control": {
+                        "type": "blocklist",
+                        "values": []
+                      },
+                      "parameter-control": {
+                        "type": "allowlist",
+                        "values": []
+                      },
+                      "timeout": 60,
+                      "verb": "keep",
+                      "use-http-10": false,
+                      "chunked-uploads": true,
+                      "cache-response": "protocol",
+                      "cache-ttl": 900,
+                      "stop-on-error": [],
+                      "target-url": "$(bc-url)/agencies/$(request.parameters.agencyDid)/branches/$(request.parameters.branchDid)/events/unlink"
+                    }
+                  }
+                ]
+              },
+              {
+                "condition": "($operationID() = 'updateSimStatus')",
+                "execute": [
+                  {
+                    "invoke": {
+                      "version": "2.0.0",
+                      "title": "SimCard",
+                      "backend-type": "detect",
+                      "header-control": {
+                        "type": "blocklist",
+                        "values": []
+                      },
+                      "parameter-control": {
+                        "type": "allowlist",
+                        "values": []
+                      },
+                      "timeout": 60,
+                      "verb": "keep",
+                      "use-http-10": false,
+                      "chunked-uploads": true,
+                      "cache-response": "protocol",
+                      "cache-ttl": 900,
+                      "stop-on-error": [],
+                      "target-url": "$(eip-url)/agencies/sim-status"
+                    }
+                  }
+                ]
+              },
+              {
+                "condition": "($operationID() = 'blockAgency')",
+                "execute": [
+                  {
+                    "invoke": {
+                      "version": "2.2.0",
+                      "title": "Block Agency",
+                      "backend-type": "detect",
+                      "header-control": {
+                        "type": "blocklist",
+                        "values": []
+                      },
+                      "parameter-control": {
+                        "type": "allowlist",
+                        "values": []
+                      },
+                      "http-version": "HTTP/1.1",
+                      "timeout": 60,
+                      "verb": "keep",
+                      "chunked-uploads": true,
+                      "persistent-connection": true,
+                      "cache-response": "protocol",
+                      "cache-ttl": 900,
+                      "stop-on-error": [],
+                      "graphql-send-type": "detect",
+                      "websocket-upgrade": false,
+                      "target-url": "$(masters-url)/agencies/$(request.parameters.agencyDid)/events/block"
+                    }
+                  }
+                ]
+              },
+              {
+                "condition": "($operationID() = 'unblockAgency')",
+                "execute": [
+                  {
+                    "invoke": {
+                      "version": "2.2.0",
+                      "title": "Unblock Agency",
+                      "backend-type": "detect",
+                      "header-control": {
+                        "type": "blocklist",
+                        "values": []
+                      },
+                      "parameter-control": {
+                        "type": "allowlist",
+                        "values": []
+                      },
+                      "http-version": "HTTP/1.1",
+                      "timeout": 60,
+                      "verb": "keep",
+                      "chunked-uploads": true,
+                      "persistent-connection": true,
+                      "cache-response": "protocol",
+                      "cache-ttl": 900,
+                      "stop-on-error": [],
+                      "graphql-send-type": "detect",
+                      "websocket-upgrade": false,
+                      "target-url": "$(masters-url)/agencies/$(request.parameters.agencyDid)/events/unblock"
+                    }
+                  }
+                ]
+              },
+              {
+                "condition": "($operationID() = 'updateAgencySyncByDid')",
+                "execute": [
+                  {
+                    "invoke": {
+                      "version": "2.2.0",
+                      "title": "Update Agency Sync",
+                      "backend-type": "detect",
+                      "header-control": {
+                        "type": "blocklist",
+                        "values": []
+                      },
+                      "parameter-control": {
+                        "type": "allowlist",
+                        "values": []
+                      },
+                      "http-version": "HTTP/1.1",
+                      "timeout": 60,
+                      "verb": "keep",
+                      "chunked-uploads": true,
+                      "persistent-connection": true,
+                      "cache-response": "protocol",
+                      "cache-ttl": 900,
+                      "stop-on-error": [],
+                      "graphql-send-type": "detect",
+                      "websocket-upgrade": false,
+                      "target-url": "$(masters-url)/agencies/$(request.parameters.did)/events/sync"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "redact": {
+            "version": "2.0.0",
+            "title": "redact",
+            "redactions": [
+              {
+                "action": "redact",
+                "path": "**.Authorization"
+              }
+            ]
+          }
+        },
+        {
+          "switch": {
+            "version": "2.0.0",
+            "title": "switch",
+            "case": [
+              {
+                "condition": "($statusCode() = 200)",
+                "execute": []
+              },
+              {
+                "condition": "($statusCode() != 200 and ($operationID() = 'retrieveAgencyTransactions' or $operationID() = 'unLinkAgencyBranch' or $operationID() = 'linkAgencyBranch' or $operationID() = 'getBranch'))",
+                "execute": [
+                  {
+                    "gatewayscript": {
+                      "version": "2.0.0",
+                      "title": "Set Error",
+                      "source": "var apim = require('apim');\nvar json = apim.getvariable('message.status');\n\n \n\nvar code=json.code;\nvar msg=json.reason;\n\n \n\n\nvar strtoken=apim.getvariable('message.body');\n\n \n\nif(strtoken)\n{\nvar detail=strtoken.detail;\ncontext.message.header.set('detail',detail);\n}\n\n \n\ncontext.message.header.set('httpCode',code);\n\n \n\ncontext.message.header.set('httpMessage',msg);"
+                    }
+                  },
+                  {
+                    "map": {
+                      "version": "2.0.0",
+                      "title": "map",
+                      "inputs": {
+                        "code": {
+                          "schema": {
+                            "type": "string"
+                          },
+                          "variable": "message.headers.httpCode"
+                        },
+                        "message": {
+                          "schema": {
+                            "type": "string"
+                          },
+                          "variable": "message.headers.httpMessage"
+                        },
+                        "details": {
+                          "schema": {
+                            "type": "string"
+                          },
+                          "variable": "message.headers.detail"
+                        }
+                      },
+                      "outputs": {
+                        "output": {
+                          "schema": {
+                            "$ref": "path/definitions/Error.yaml"
+                          },
+                          "variable": "message.body",
+                          "content": "application/json"
+                        }
+                      },
+                      "actions": [
+                        {
+                          "set": "output.httpCode",
+                          "from": "code"
+                        },
+                        {
+                          "set": "output.httpMessage",
+                          "from": "message"
+                        },
+                        {
+                          "set": "output.moreInformation",
+                          "from": "details"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "set-variable": {
+                      "version": "2.0.0",
+                      "title": "set-variable",
+                      "actions": [
+                        {
+                          "clear": "message.headers.httpCode"
+                        },
+                        {
+                          "clear": "message.headers.httpMessage"
+                        },
+                        {
+                          "clear": "message.headers.detail"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "otherwise": []
+              }
+            ]
+          }
+        }
+      ],
+      "catch": [
+        {
+          "errors": [
+            "Token_Error"
+          ],
+          "execute": [
+            {
+              "map": {
+                "version": "2.0.0",
+                "title": "Map Token Error",
+                "inputs": {
+                  "input": {
+                    "schema": {
+                      "$ref": "path/definitions/Error.yaml"
+                    },
+                    "variable": "message.body",
+                    "content": "application/json"
+                  }
+                },
+                "outputs": {
+                  "output": {
+                    "schema": {
+                      "$ref": "path/definitions/Error.yaml"
+                    },
+                    "variable": "message.body",
+                    "content": "application/json"
+                  }
+                },
+                "actions": [
+                  {
+                    "set": "output.httpMessage",
+                    "value": "\"Unauthorized\""
+                  },
+                  {
+                    "set": "output.httpCode",
+                    "value": "'401'"
+                  },
+                  {
+                    "set": "output.moreInformation",
+                    "from": "input.moreInformation"
+                  }
+                ],
+                "options": {
+                  "mapEnablePostProcessingJSON": false,
+                  "mapEmulateV4EmptyJSONObject": false,
+                  "mapEmulateV4DefaultRequiredProps": false,
+                  "mapReferenceLimit": 1
+                }
+              }
+            },
+            {
+              "set-variable": {
+                "version": "2.0.0",
+                "title": "Set Status Code",
+                "actions": [
+                  {
+                    "set": "message.status.code",
+                    "value": "401",
+                    "type": "string"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "finally": []
+    },
+    "properties": {},
+    "application-authentication": {
+      "certificate": false
+    },
+    "activity-log": {
+      "success-content": "payload",
+      "error-content": "payload",
+      "enabled": true
+    },
+    "buffering": true,
+    "catalogs": {}
+  }
+}
