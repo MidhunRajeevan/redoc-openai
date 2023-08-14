@@ -1,0 +1,33 @@
+type: object
+properties:
+  permitNo:
+    type: string
+    description: Permit Number of the Agency issued by RTA
+    example: '12345678'
+  reference:
+    type: string
+    description: Traffic Number related to the permit
+    example: '12345678'
+  issuedDate:
+    type: string
+    description: Permit Issued Date
+    format: date-time
+  expiryDate:
+    type: string
+    description: Permit Expiry Date
+    format: date-time
+  authorityName:
+    $ref: .\LanguageMapper.yaml
+  owners:
+    type: array
+    description: List of Permit Owners
+    items:
+      type: string
+      description: List of Permit Owners
+  managers:
+    type: array
+    description: List of Permit Managers
+    items:
+      type: string
+      description: List of Permit Managers
+description: Permit issued by RTA

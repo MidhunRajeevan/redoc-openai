@@ -1,0 +1,32 @@
+type: object
+properties:
+  id:
+    type: integer
+    description: Unique Identifier for the Agency
+    format: int64
+    example: 1
+  did:
+    type: string
+    description: Decentralized Identifier for the Agency
+    example: did:ded:1210141
+  source:
+    type: string
+    description: Source for the Decentralized ID
+    example: ded
+  sourceKey:
+    type: string
+    description: Natural Key from the Source. e.g. Trade License Number
+    example: '1210141'
+  versionHash:
+    type: string
+    description: Hash of all trackable attributes
+    example: 2fdc0177057d3a5c6c2c0821e01f4fa8d90f9a3bb7afd82b0db526af98d68de8
+  name:
+    $ref: .\MultiLang.yaml
+  chainName:
+    $ref: .\MultiLang.yaml
+  tradeLicenseNumber:
+    type: string
+    description: 'tradeLicenseNumber '
+    example: '12764548'
+description: Agency

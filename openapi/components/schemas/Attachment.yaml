@@ -1,0 +1,19 @@
+type: object
+properties:
+  label:
+    type: string
+    description: Attachment Label
+    example: passport
+  reference:
+    type: string
+    description: Attachment Reference UID
+    example: did:in:2232124123
+  url:
+    type: string
+    description: Attachment URL
+    example: /attachments/582342345
+  hash:
+    type: string
+    description: Attachment Hash
+    example: 4e76434eea3c9d9cf9cb10bbf3f4a74b
+description: Attachments

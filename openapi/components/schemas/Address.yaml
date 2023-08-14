@@ -1,0 +1,47 @@
+type: object
+properties:
+  label:
+    type: string
+    description: Address Label
+    example: work
+  address:
+    $ref: .\MultiLang.yaml
+  makani:
+    type: string
+    description: Makani Number
+    example: 24330 87031
+  poBox:
+    type: string
+    description: PO Box Number
+    example: '9226'
+  area:
+    $ref: .\CodeName.yaml
+  subArea:
+    $ref: .\CodeName.yaml
+  community:
+    $ref: .\CodeName.yaml
+  unit:
+    $ref: .\CodeName.yaml
+  building:
+    $ref: .\CodeName.yaml
+  street:
+    $ref: .\CodeName.yaml
+  city:
+    $ref: .\CodeName.yaml
+  region:
+    $ref: .\CodeName.yaml
+  country:
+    $ref: .\CodeName.yaml
+  postalCode:
+    type: string
+    description: Postal Code
+    example: '9226'
+  emirate:
+    $ref: .\CodeName.yaml
+  geoLocation:
+    $ref: .\Location.yaml
+  preferred:
+    type: boolean
+    description: Preferred Address Flag
+    example: true
+description: Addresses

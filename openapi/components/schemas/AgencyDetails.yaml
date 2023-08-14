@@ -1,0 +1,26 @@
+type: object
+properties:
+  organization:
+    $ref: .\AgencyOrganization.yaml
+  permit:
+    $ref: .\AgencyPermit.yaml
+  partners:
+    type: array
+    description: List of Partners in the Agency
+    items:
+      $ref: .\AgencyPartner.yaml
+  contact:
+    $ref: .\Contact.yaml
+  attachments:
+    type: array
+    description: Attachments
+    items:
+      $ref: .\Attachment.yaml
+  activity:
+    type: array
+    description: Activity
+    items:
+      $ref: .\AgencyActivity.yaml
+  commerceRegistry:
+    $ref: .\AgencyCommerceRegistry.yaml
+description: Agency Details

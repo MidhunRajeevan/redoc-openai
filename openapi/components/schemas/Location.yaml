@@ -1,0 +1,13 @@
+type: object
+properties:
+  latitude:
+    type: number
+    description: Latitude
+    format: double
+    example: 25.1892807
+  longitude:
+    type: number
+    description: Longitude
+    format: double
+    example: 55.2561466
+description: Geolocation

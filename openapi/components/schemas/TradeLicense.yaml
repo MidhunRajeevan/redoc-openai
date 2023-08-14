@@ -1,0 +1,15 @@
+type: object
+properties:
+  licenseNo:
+    type: string
+    description: Trade License Number of the Agency issued by DED
+    example: '456789'
+  issuedDate:
+    type: string
+    description: Trade License issued date
+    format: date-time
+  expiryDate:
+    type: string
+    description: Trade License expiry date
+    format: date-time
+description: Trade License issued by DED

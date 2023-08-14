@@ -1,0 +1,19 @@
+type: object
+properties:
+  licenseType:
+    $ref: .\LanguageMapper.yaml
+  legalType:
+    $ref: .\LanguageMapper.yaml
+  classDescription:
+    $ref: .\LanguageMapper.yaml
+  representedBy:
+    $ref: .\LanguageMapper.yaml
+  issuedDate:
+    type: string
+    description: Permit Number of the Agency issued by RTA
+    format: date-time
+  expriyDate:
+    type: string
+    description: Permit Number of the Agency issued by RTA
+    format: date-time
+description: Permit issued by RTA

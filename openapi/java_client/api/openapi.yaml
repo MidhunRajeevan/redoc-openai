@@ -1,0 +1,3929 @@
+openapi: 3.0.1
+info:
+  description: 'Manage Agency Information '
+  title: Agency
+  version: 0.0.1
+  x-ibm-name: agency
+  x-ibm-summary: 'Manage Agency Information '
+servers:
+- url: /
+security:
+- clientIdHeader: []
+paths:
+  /agencies/{did}/transactions:
+    get:
+      description: Fetch an agency by Id
+      operationId: retrieveAgencyTransactions
+      parameters:
+      - description: Unique System Identifier
+        explode: false
+        in: header
+        name: X-IBM-Client-Id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Authentication Token
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Agency UID
+        explode: false
+        in: path
+        name: did
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Client Secret
+        explode: false
+        in: header
+        name: X-IBM-Client-Secret
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AgencyWithTransactions'
+          description: OK
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: UnAuthorized
+        "403":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "405":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Method Not Allowed
+        "422":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unprocessable Entity
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+        "503":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Service Unavailable
+      summary: Fetch an agency by ID
+      tags:
+      - agency
+      x-accepts: '*/*'
+  /agencies/{did}/events/close:
+    post:
+      description: Close an agency in TARS
+      operationId: closeAgency
+      parameters:
+      - description: Unique System Identifier
+        explode: false
+        in: header
+        name: X-IBM-Client-Id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Authentication Token
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Agency UID
+        explode: false
+        in: path
+        name: did
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Client Secret
+        explode: false
+        in: header
+        name: X-IBM-Client-Secret
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content: {}
+          description: OK
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: UnAuthorized
+        "403":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "405":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Method Not Allowed
+        "422":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unprocessable Entity
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+        "503":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Service Unavailable
+      summary: Close an agency in TARS
+      tags:
+      - agency:events
+      x-accepts: '*/*'
+  /agencies/{did}/events/unarchive:
+    post:
+      description: Unarchive an agency in TARS
+      operationId: unarchiveAgency
+      parameters:
+      - description: Unique System Identifier
+        explode: false
+        in: header
+        name: X-IBM-Client-Id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Authentication Token
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Agency UID
+        explode: false
+        in: path
+        name: did
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Client Secret
+        explode: false
+        in: header
+        name: X-IBM-Client-Secret
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content: {}
+          description: OK
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: UnAuthorized
+        "403":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "405":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Method Not Allowed
+        "422":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unprocessable Entity
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+        "503":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Service Unavailable
+      summary: Unarchive an agency in TARS
+      tags:
+      - agency:events
+      x-accepts: '*/*'
+  /agencies/{did}/events/archive:
+    post:
+      description: Archive an agency in TARS
+      operationId: archiveAgency
+      parameters:
+      - description: Unique System Identifier
+        explode: false
+        in: header
+        name: X-IBM-Client-Id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Authentication Token
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Agency UID
+        explode: false
+        in: path
+        name: did
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Client Secret
+        explode: false
+        in: header
+        name: X-IBM-Client-Secret
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content: {}
+          description: OK
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: UnAuthorized
+        "403":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "405":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Method Not Allowed
+        "422":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unprocessable Entity
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+        "503":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Service Unavailable
+      summary: Archive an agency in TARS
+      tags:
+      - agency:events
+      x-accepts: '*/*'
+  /agencies/{did}/details:
+    get:
+      description: Fetch an agency in TARS
+      operationId: retrieveAgencyDetails
+      parameters:
+      - description: Unique System Identifier
+        explode: false
+        in: header
+        name: X-IBM-Client-Id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Authentication Token
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Agency UID
+        explode: false
+        in: path
+        name: did
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Client Secret
+        explode: false
+        in: header
+        name: X-IBM-Client-Secret
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AgencyWithDetails'
+          description: OK
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: UnAuthorized
+        "403":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "405":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Method Not Allowed
+        "422":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unprocessable Entity
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+        "503":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Service Unavailable
+      summary: Fetch an agency in TARS
+      tags:
+      - agency
+      x-accepts: '*/*'
+  /agencies/{did}:
+    delete:
+      description: Delete an agency from TARS
+      operationId: deleteAgency
+      parameters:
+      - description: Unique System Identifier
+        explode: false
+        in: header
+        name: X-IBM-Client-Id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Authentication Token
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Agency UID
+        explode: false
+        in: path
+        name: did
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Client Secret
+        explode: false
+        in: header
+        name: X-IBM-Client-Secret
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          content:
+            '*/*':
+              schema:
+                type: string
+          description: No Content
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: UnAuthorized
+        "403":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "405":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Method Not Allowed
+        "422":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unprocessable Entity
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+        "503":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Service Unavailable
+      summary: Delete an agency from TARS
+      tags:
+      - agency
+      x-accepts: '*/*'
+    get:
+      description: Fetch an agency in TARS
+      operationId: retrieveAgencyMasters
+      parameters:
+      - description: Unique System Identifier
+        explode: false
+        in: header
+        name: X-IBM-Client-Id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Authentication Token
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Agency UID
+        explode: false
+        in: path
+        name: did
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Client Secret
+        explode: false
+        in: header
+        name: X-IBM-Client-Secret
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Agency'
+          description: OK
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: UnAuthorized
+        "403":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "405":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Method Not Allowed
+        "422":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unprocessable Entity
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+        "503":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Service Unavailable
+      summary: Fetch an agency in TARS
+      tags:
+      - agency
+      x-accepts: '*/*'
+    patch:
+      description: Update an agency in TARS
+      operationId: updateAgency
+      parameters:
+      - description: Unique System Identifier
+        explode: false
+        in: header
+        name: X-IBM-Client-Id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Authentication Token
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Agency UID
+        explode: false
+        in: path
+        name: did
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Client Secret
+        explode: false
+        in: header
+        name: X-IBM-Client-Secret
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Agency'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Agency'
+          description: OK
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: UnAuthorized
+        "403":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "405":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Method Not Allowed
+        "422":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unprocessable Entity
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+        "503":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Service Unavailable
+      summary: Update an agency in TARS
+      tags:
+      - agency
+      x-codegen-request-body-name: updateAgency
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /agencies/{did}/contacts:
+    put:
+      operationId: updateAgencyContacts
+      parameters:
+      - description: Unique System Identifier
+        explode: false
+        in: header
+        name: X-IBM-Client-Id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Authentication Token
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Agency UID
+        explode: false
+        in: path
+        name: did
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Client Secret
+        explode: false
+        in: header
+        name: X-IBM-Client-Secret
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+        required: false
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Contact'
+          description: OK
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: UnAuthorized
+        "403":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "405":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Method Not Allowed
+        "422":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unprocessable Entity
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+        "503":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Service Unavailable
+      summary: Update agency details
+      tags:
+      - agency
+      x-codegen-request-body-name: requestBody
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /agencies/sim-status:
+    post:
+      operationId: updateSimStatus
+      parameters:
+      - description: Unique System Identifier
+        explode: false
+        in: header
+        name: X-IBM-Client-Id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Authentication Token
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Client Secret
+        explode: false
+        in: header
+        name: X-IBM-Client-Secret
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SimCard'
+        required: false
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SimCardResponse'
+          description: OK
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: UnAuthorized
+        "403":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "405":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Method Not Allowed
+        "422":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unprocessable Entity
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+        "503":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Service Unavailable
+      summary: Update newly created/existing organizations sim card received status
+      tags:
+      - agency
+      x-codegen-request-body-name: requestBody
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /agencies/{agencyDid}/branches:
+    get:
+      description: Get a list of branches
+      operationId: listBranches
+      parameters:
+      - description: Unique System Identifier
+        explode: false
+        in: header
+        name: X-IBM-Client-Id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Authentication Token
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Agency UID
+        explode: false
+        in: path
+        name: agencyDid
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Client Secret
+        explode: false
+        in: header
+        name: X-IBM-Client-Secret
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/AgencyHeader'
+                type: array
+          description: OK
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: UnAuthorized
+        "403":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "405":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Method Not Allowed
+        "422":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unprocessable Entity
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+        "503":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Service Unavailable
+      summary: Get a list of branches
+      tags:
+      - agency:group
+      x-accepts: '*/*'
+  /agencies/{agencyDid}/branches/{branchDid}:
+    get:
+      description: Get a Branch by ID
+      operationId: getBranch
+      parameters:
+      - description: Unique System Identifier
+        explode: false
+        in: header
+        name: X-IBM-Client-Id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Authentication Token
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Agency UID
+        explode: false
+        in: path
+        name: agencyDid
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Agency UID
+        explode: false
+        in: path
+        name: branchDid
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Client Secret
+        explode: false
+        in: header
+        name: X-IBM-Client-Secret
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Agency'
+          description: OK
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: UnAuthorized
+        "403":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "405":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Method Not Allowed
+        "422":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unprocessable Entity
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+        "503":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Service Unavailable
+      summary: Get a Branch by ID
+      tags:
+      - agency:group
+      x-accepts: '*/*'
+  /agencies/{agencyDid}/branches/{branchDid}/events/unlink:
+    post:
+      description: Request for unlinking a branch agency
+      operationId: unLinkAgencyBranch
+      parameters:
+      - description: Unique System Identifier
+        explode: false
+        in: header
+        name: X-IBM-Client-Id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Authentication Token
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Agency UID
+        explode: false
+        in: path
+        name: agencyDid
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Client Secret
+        explode: false
+        in: header
+        name: X-IBM-Client-Secret
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Branch DID
+        explode: false
+        in: path
+        name: branchDid
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgencyGroupRequest'
+        description: Client Secret
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Agency'
+          description: OK
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: UnAuthorized
+        "403":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "405":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Method Not Allowed
+        "422":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unprocessable Entity
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+        "503":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Service Unavailable
+      summary: Request for unlinking a branch agency
+      tags:
+      - agency:group:workflow
+      x-codegen-request-body-name: request
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /agencies/{agencyDid}/branches/{branchDid}/events/link:
+    post:
+      description: Request for linking a branch agency
+      operationId: linkAgencyBranch
+      parameters:
+      - description: Unique System Identifier
+        explode: false
+        in: header
+        name: X-IBM-Client-Id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Authentication Token
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Agency UID
+        explode: false
+        in: path
+        name: agencyDid
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Client Secret
+        explode: false
+        in: header
+        name: X-IBM-Client-Secret
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: Branch DID
+        explode: false
+        in: path
+        name: branchDid
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgencyGroupRequest'
+        description: Client Secret
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Agency'
+          description: OK
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: UnAuthorized
+        "403":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "405":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Method Not Allowed
+        "422":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unprocessable Entity
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+        "503":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Service Unavailable
+      summary: Request for linking a branch agency
+      tags:
+      - agency:group:workflow
+      x-codegen-request-body-name: request
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /agencies/{agencyDid}/events/block:
+    post:
+      description: Block agency
+      operationId: blockAgency
+      parameters:
+      - description: Unique System Identifier
+        explode: false
+        in: header
+        name: X-IBM-Client-Id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Authentication Token
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Agency UID
+        explode: false
+        in: path
+        name: agencyDid
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Client Secret
+        explode: false
+        in: header
+        name: X-IBM-Client-Secret
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgencyRemarks'
+        description: Request
+        required: true
+      responses:
+        "200":
+          content: {}
+          description: OK
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: UnAuthorized
+        "403":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "405":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Method Not Allowed
+        "422":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unprocessable Entity
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+        "503":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Service Unavailable
+      summary: Block agency
+      tags:
+      - agency
+      x-codegen-request-body-name: request
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /agencies/{agencyDid}/events/unblock:
+    post:
+      description: Unblock agency
+      operationId: unblockAgency
+      parameters:
+      - description: Unique System Identifier
+        explode: false
+        in: header
+        name: X-IBM-Client-Id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Authentication Token
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Agency UID
+        explode: false
+        in: path
+        name: agencyDid
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Client Secret
+        explode: false
+        in: header
+        name: X-IBM-Client-Secret
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgencyRemarks'
+        description: Request
+        required: true
+      responses:
+        "200":
+          content: {}
+          description: OK
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: UnAuthorized
+        "403":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "405":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Method Not Allowed
+        "422":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unprocessable Entity
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+        "503":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Service Unavailable
+      summary: Unblock agency
+      tags:
+      - agency
+      x-codegen-request-body-name: request
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /agencies/{did}/events/sync:
+    post:
+      description: Update agency details by sync
+      operationId: updateAgencySyncByDid
+      parameters:
+      - description: Unique System Identifier
+        explode: false
+        in: header
+        name: X-IBM-Client-Id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Authentication Token
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Agency ID
+        explode: false
+        in: path
+        name: did
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Client Secret
+        explode: false
+        in: header
+        name: X-IBM-Client-Secret
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AgencyWithDetails'
+          description: OK
+        "400":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: UnAuthorized
+        "403":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "405":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Method Not Allowed
+        "422":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unprocessable Entity
+        "500":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+        "503":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Service Unavailable
+      summary: Update agency details by sync
+      tags:
+      - agency
+      x-accepts: '*/*'
+components:
+  schemas:
+    AgencyHeader:
+      description: Agency
+      example:
+        sourceKey: "1210141"
+        chainName:
+          ar: عربي
+          en: English
+        name:
+          ar: عربي
+          en: English
+        id: 1
+        source: ded
+        versionHash: 2fdc0177057d3a5c6c2c0821e01f4fa8d90f9a3bb7afd82b0db526af98d68de8
+        did: did:ded:1210141
+        tradeLicenseNumber: "12764548"
+      properties:
+        id:
+          description: Unique Identifier for the Agency
+          example: 1
+          format: int64
+          type: integer
+        did:
+          description: Decentralized Identifier for the Agency
+          example: did:ded:1210141
+          type: string
+        source:
+          description: Source for the Decentralized ID
+          example: ded
+          type: string
+        sourceKey:
+          description: Natural Key from the Source. e.g. Trade License Number
+          example: "1210141"
+          type: string
+        versionHash:
+          description: Hash of all trackable attributes
+          example: 2fdc0177057d3a5c6c2c0821e01f4fa8d90f9a3bb7afd82b0db526af98d68de8
+          type: string
+        name:
+          $ref: '#/components/schemas/MultiLang'
+        chainName:
+          $ref: '#/components/schemas/MultiLang'
+        tradeLicenseNumber:
+          description: 'tradeLicenseNumber '
+          example: "12764548"
+          type: string
+      type: object
+    Email:
+      description: Emails
+      example:
+        label: personal
+        email: john.doe@example.com
+        preferred: true
+      properties:
+        label:
+          description: Email Label
+          example: personal
+          type: string
+        email:
+          description: Email
+          example: john.doe@example.com
+          type: string
+        preferred:
+          description: Preferred Email Flag
+          example: true
+          type: boolean
+      type: object
+    Location:
+      description: Geolocation
+      example:
+        latitude: 25.1892807
+        longitude: 55.2561466
+      properties:
+        latitude:
+          description: Latitude
+          example: 25.1892807
+          format: double
+          type: number
+        longitude:
+          description: Longitude
+          example: 55.2561466
+          format: double
+          type: number
+      type: object
+    LanguageMapper:
+      example:
+        ar: عربي
+        en: English
+      properties:
+        en:
+          description: Name in English
+          example: English
+          type: string
+        ar:
+          description: Name in Arabic
+          example: عربي
+          type: string
+      type: object
+    Address:
+      description: Addresses
+      example:
+        area:
+          code: code
+          name:
+            ar: عربي
+            en: English
+        country:
+          code: code
+          name:
+            ar: عربي
+            en: English
+        address:
+          ar: عربي
+          en: English
+        city:
+          code: code
+          name:
+            ar: عربي
+            en: English
+        postalCode: "9226"
+        label: work
+        makani: 24330 87031
+        community:
+          code: code
+          name:
+            ar: عربي
+            en: English
+        building:
+          code: code
+          name:
+            ar: عربي
+            en: English
+        poBox: "9226"
+        unit:
+          code: code
+          name:
+            ar: عربي
+            en: English
+        emirate:
+          code: code
+          name:
+            ar: عربي
+            en: English
+        geoLocation:
+          latitude: 25.1892807
+          longitude: 55.2561466
+        street:
+          code: code
+          name:
+            ar: عربي
+            en: English
+        subArea:
+          code: code
+          name:
+            ar: عربي
+            en: English
+        region:
+          code: code
+          name:
+            ar: عربي
+            en: English
+        preferred: true
+      properties:
+        label:
+          description: Address Label
+          example: work
+          type: string
+        address:
+          $ref: '#/components/schemas/MultiLang'
+        makani:
+          description: Makani Number
+          example: 24330 87031
+          type: string
+        poBox:
+          description: PO Box Number
+          example: "9226"
+          type: string
+        area:
+          $ref: '#/components/schemas/CodeName'
+        subArea:
+          $ref: '#/components/schemas/CodeName'
+        community:
+          $ref: '#/components/schemas/CodeName'
+        unit:
+          $ref: '#/components/schemas/CodeName'
+        building:
+          $ref: '#/components/schemas/CodeName'
+        street:
+          $ref: '#/components/schemas/CodeName'
+        city:
+          $ref: '#/components/schemas/CodeName'
+        region:
+          $ref: '#/components/schemas/CodeName'
+        country:
+          $ref: '#/components/schemas/CodeName'
+        postalCode:
+          description: Postal Code
+          example: "9226"
+          type: string
+        emirate:
+          $ref: '#/components/schemas/CodeName'
+        geoLocation:
+          $ref: '#/components/schemas/Location'
+        preferred:
+          description: Preferred Address Flag
+          example: true
+          type: boolean
+      type: object
+    Error:
+      properties:
+        httpCode:
+          description: Error code
+          type: string
+        httpMessage:
+          description: Error description
+          type: string
+        moreInformation:
+          description: Detailed error description
+          type: string
+      type: object
+    MultiLang:
+      description: Name in Arabic and English
+      example:
+        ar: عربي
+        en: English
+      properties:
+        en:
+          description: English
+          example: English
+          type: string
+        ar:
+          description: Arabic
+          example: عربي
+          type: string
+      type: object
+    Agency:
+      example:
+        sourceKey: "1021252"
+        chainName:
+          ar: عربي
+          en: English
+        parent:
+          sourceKey: "1210141"
+          chainName:
+            ar: عربي
+            en: English
+          name:
+            ar: عربي
+            en: English
+          id: 1
+          source: ded
+          versionHash: 2fdc0177057d3a5c6c2c0821e01f4fa8d90f9a3bb7afd82b0db526af98d68de8
+          did: did:ded:1210141
+          tradeLicenseNumber: "12764548"
+        updatedBy: tars
+        isArchived: true
+        trafficFileNumber: "12345678"
+        source: rta
+        versionHash: 2fdc0177057d3a5c6c2c0821e01f4fa8d90f9a3bb7afd82b0db526af98d68de8
+        isActive: true
+        createdAt: 2020-04-04T16:04:04Z
+        createdBy: tars
+        imageUrl: /agencies/did:rta:1021252/7c96c336f65e2.png
+        name:
+          ar: عربي
+          en: English
+        tradeLicense:
+          expiryDate: 2000-01-23T04:56:07.000+00:00
+          issuedDate: 2000-01-23T04:56:07.000+00:00
+          licenseNo: "456789"
+        id: 1
+        category: A
+        did: did:rta:1021252
+        status: ACTIVE
+        updatedAt: 2020-04-04T16:04:04Z
+      properties:
+        id:
+          description: "Unique Identifier for the Agency. Autogenerated, not supplied\
+            \ by the consumer."
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        did:
+          description: Decentralized Identifier for the Agency
+          example: did:rta:1021252
+          readOnly: true
+          type: string
+        source:
+          description: Source for the Decentralized ID
+          example: rta
+          readOnly: true
+          type: string
+        sourceKey:
+          description: Natural Key from the Source
+          example: "1021252"
+          readOnly: true
+          type: string
+        versionHash:
+          description: Hash of all trackable attributes
+          example: 2fdc0177057d3a5c6c2c0821e01f4fa8d90f9a3bb7afd82b0db526af98d68de8
+          readOnly: true
+          type: string
+        name:
+          $ref: '#/components/schemas/MultiLang'
+        chainName:
+          $ref: '#/components/schemas/MultiLang'
+        parent:
+          $ref: '#/components/schemas/AgencyHeader'
+        trafficFileNumber:
+          description: Traffic File Number of the Agency issued by RTA
+          example: "12345678"
+          type: string
+        tradeLicense:
+          $ref: '#/components/schemas/TradeLicense'
+        category:
+          description: Category of the Agency
+          enum:
+          - A
+          - B
+          - C
+          - D
+          example: A
+          type: string
+        imageUrl:
+          description: Image URL
+          example: /agencies/did:rta:1021252/7c96c336f65e2.png
+          type: string
+        status:
+          description: Status of the Agency
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - ARCHIVED
+          example: ACTIVE
+          readOnly: true
+          type: string
+        isActive:
+          description: Check if Agency is Active
+          example: true
+          readOnly: true
+          type: boolean
+        isArchived:
+          description: Check if Agency is Archived
+          example: true
+          readOnly: true
+          type: boolean
+        createdBy:
+          description: Audit Field - Created By
+          example: tars
+          readOnly: true
+          type: string
+        updatedBy:
+          description: Audit Field - Updated By
+          example: tars
+          readOnly: true
+          type: string
+        createdAt:
+          description: Audit Field - Created Timestamp
+          example: 2020-04-04T16:04:04Z
+          format: date-time
+          readOnly: true
+          type: string
+        updatedAt:
+          description: Audit Field - Updated Timestamp
+          example: 2020-04-04T16:04:04Z
+          format: date-time
+          readOnly: true
+          type: string
+      type: object
+    Contact:
+      description: Contacts
+      example:
+        emails:
+        - label: personal
+          email: john.doe@example.com
+          preferred: true
+        - label: personal
+          email: john.doe@example.com
+          preferred: true
+        addresses:
+        - area:
+            code: code
+            name:
+              ar: عربي
+              en: English
+          country:
+            code: code
+            name:
+              ar: عربي
+              en: English
+          address:
+            ar: عربي
+            en: English
+          city:
+            code: code
+            name:
+              ar: عربي
+              en: English
+          postalCode: "9226"
+          label: work
+          makani: 24330 87031
+          community:
+            code: code
+            name:
+              ar: عربي
+              en: English
+          building:
+            code: code
+            name:
+              ar: عربي
+              en: English
+          poBox: "9226"
+          unit:
+            code: code
+            name:
+              ar: عربي
+              en: English
+          emirate:
+            code: code
+            name:
+              ar: عربي
+              en: English
+          geoLocation:
+            latitude: 25.1892807
+            longitude: 55.2561466
+          street:
+            code: code
+            name:
+              ar: عربي
+              en: English
+          subArea:
+            code: code
+            name:
+              ar: عربي
+              en: English
+          region:
+            code: code
+            name:
+              ar: عربي
+              en: English
+          preferred: true
+        - area:
+            code: code
+            name:
+              ar: عربي
+              en: English
+          country:
+            code: code
+            name:
+              ar: عربي
+              en: English
+          address:
+            ar: عربي
+            en: English
+          city:
+            code: code
+            name:
+              ar: عربي
+              en: English
+          postalCode: "9226"
+          label: work
+          makani: 24330 87031
+          community:
+            code: code
+            name:
+              ar: عربي
+              en: English
+          building:
+            code: code
+            name:
+              ar: عربي
+              en: English
+          poBox: "9226"
+          unit:
+            code: code
+            name:
+              ar: عربي
+              en: English
+          emirate:
+            code: code
+            name:
+              ar: عربي
+              en: English
+          geoLocation:
+            latitude: 25.1892807
+            longitude: 55.2561466
+          street:
+            code: code
+            name:
+              ar: عربي
+              en: English
+          subArea:
+            code: code
+            name:
+              ar: عربي
+              en: English
+          region:
+            code: code
+            name:
+              ar: عربي
+              en: English
+          preferred: true
+        phones:
+        - extension: "1234"
+          phone: "43435353"
+          countryCode: "971"
+          label: work
+          preferred: true
+        - extension: "1234"
+          phone: "43435353"
+          countryCode: "971"
+          label: work
+          preferred: true
+      properties:
+        addresses:
+          description: Addresses
+          items:
+            $ref: '#/components/schemas/Address'
+          type: array
+        phones:
+          description: Phones
+          items:
+            $ref: '#/components/schemas/PhoneNoDetails'
+          type: array
+        emails:
+          description: Emails
+          items:
+            $ref: '#/components/schemas/Email'
+          type: array
+      type: object
+    PhoneNoDetails:
+      description: Phones
+      example:
+        extension: "1234"
+        phone: "43435353"
+        countryCode: "971"
+        label: work
+        preferred: true
+      properties:
+        label:
+          description: Phone Label
+          example: work
+          type: string
+        countryCode:
+          description: Country Code
+          example: "971"
+          type: string
+        phone:
+          description: Phone
+          example: "43435353"
+          type: string
+        extension:
+          description: Extension
+          example: "1234"
+          type: string
+        preferred:
+          description: Preferred Phone Flag
+          example: true
+          type: boolean
+      type: object
+    CodeName:
+      description: Emirate
+      example:
+        code: code
+        name:
+          ar: عربي
+          en: English
+      properties:
+        code:
+          description: Code
+          type: string
+        name:
+          $ref: '#/components/schemas/LanguageMapper'
+      type: object
+    TradeLicense:
+      description: Trade License issued by DED
+      example:
+        expiryDate: 2000-01-23T04:56:07.000+00:00
+        issuedDate: 2000-01-23T04:56:07.000+00:00
+        licenseNo: "456789"
+      properties:
+        licenseNo:
+          description: Trade License Number of the Agency issued by DED
+          example: "456789"
+          type: string
+        issuedDate:
+          description: Trade License issued date
+          format: date-time
+          type: string
+        expiryDate:
+          description: Trade License expiry date
+          format: date-time
+          type: string
+      type: object
+    AgencyOrganization:
+      description: Permit issued by RTA
+      example:
+        licenseType:
+          ar: عربي
+          en: English
+        issuedDate: 2000-01-23T04:56:07.000+00:00
+        legalType:
+          ar: عربي
+          en: English
+        representedBy:
+          ar: عربي
+          en: English
+        expriyDate: 2000-01-23T04:56:07.000+00:00
+        classDescription:
+          ar: عربي
+          en: English
+      properties:
+        licenseType:
+          $ref: '#/components/schemas/LanguageMapper'
+        legalType:
+          $ref: '#/components/schemas/LanguageMapper'
+        classDescription:
+          $ref: '#/components/schemas/LanguageMapper'
+        representedBy:
+          $ref: '#/components/schemas/LanguageMapper'
+        issuedDate:
+          description: Permit Number of the Agency issued by RTA
+          format: date-time
+          type: string
+        expriyDate:
+          description: Permit Number of the Agency issued by RTA
+          format: date-time
+          type: string
+      type: object
+    AgencyPermit:
+      description: Permit issued by RTA
+      example:
+        reference: "12345678"
+        expiryDate: 2000-01-23T04:56:07.000+00:00
+        issuedDate: 2000-01-23T04:56:07.000+00:00
+        authorityName:
+          ar: عربي
+          en: English
+        owners:
+        - owners
+        - owners
+        permitNo: "12345678"
+        managers:
+        - managers
+        - managers
+      properties:
+        permitNo:
+          description: Permit Number of the Agency issued by RTA
+          example: "12345678"
+          type: string
+        reference:
+          description: Traffic Number related to the permit
+          example: "12345678"
+          type: string
+        issuedDate:
+          description: Permit Issued Date
+          format: date-time
+          type: string
+        expiryDate:
+          description: Permit Expiry Date
+          format: date-time
+          type: string
+        authorityName:
+          $ref: '#/components/schemas/LanguageMapper'
+        owners:
+          description: List of Permit Owners
+          items:
+            description: List of Permit Owners
+            type: string
+          type: array
+        managers:
+          description: List of Permit Managers
+          items:
+            description: List of Permit Managers
+            type: string
+          type: array
+      type: object
+    AgencyPartner:
+      description: List of Partners in the Agency
+      example:
+        passportNumber: "791234567"
+        effectiveEndDate: 2000-01-23T04:56:07.000+00:00
+        partnerNo: "10088"
+        residenceNumber: "100"
+        nationality: United Kingdom
+        legalType: Partner
+        name:
+          ar: عربي
+          en: English
+        effectiveStartDate: 2000-01-23T04:56:07.000+00:00
+        emiratesId: "1122646554"
+        percentOwnership: 100
+        birthDate: 1959-05-23
+        personCategory: Person
+      properties:
+        partnerNo:
+          description: Partner Number
+          example: "10088"
+          type: string
+        name:
+          $ref: '#/components/schemas/LanguageMapper'
+        emiratesId:
+          description: Emirtates ID
+          example: "1122646554"
+          type: string
+        passportNumber:
+          description: Passport Number
+          example: "791234567"
+          type: string
+        nationality:
+          description: Nationality of the Partner
+          example: United Kingdom
+          type: string
+        birthDate:
+          description: Date of Birth
+          example: 1959-05-23
+          type: string
+        personCategory:
+          description: Category of the Person
+          example: Person
+          type: string
+        legalType:
+          description: Legal Type of the Partner
+          example: Partner
+          type: string
+        percentOwnership:
+          description: Ownership Percentage
+          example: 100
+          format: int32
+          type: integer
+        residenceNumber:
+          description: Residence Number
+          example: "100"
+          type: string
+        effectiveStartDate:
+          description: Effective Start Date
+          format: date-time
+          type: string
+        effectiveEndDate:
+          description: Effective End Date
+          format: date-time
+          type: string
+      type: object
+    Attachment:
+      description: Attachments
+      example:
+        reference: did:in:2232124123
+        label: passport
+        url: /attachments/582342345
+        hash: 4e76434eea3c9d9cf9cb10bbf3f4a74b
+      properties:
+        label:
+          description: Attachment Label
+          example: passport
+          type: string
+        reference:
+          description: Attachment Reference UID
+          example: did:in:2232124123
+          type: string
+        url:
+          description: Attachment URL
+          example: /attachments/582342345
+          type: string
+        hash:
+          description: Attachment Hash
+          example: 4e76434eea3c9d9cf9cb10bbf3f4a74b
+          type: string
+      type: object
+    AgencyWithDetails:
+      example:
+        sourceKey: "1021252"
+        chainName:
+          ar: عربي
+          en: English
+        parent:
+          sourceKey: "1210141"
+          chainName:
+            ar: عربي
+            en: English
+          name:
+            ar: عربي
+            en: English
+          id: 1
+          source: ded
+          versionHash: 2fdc0177057d3a5c6c2c0821e01f4fa8d90f9a3bb7afd82b0db526af98d68de8
+          did: did:ded:1210141
+          tradeLicenseNumber: "12764548"
+        updatedBy: tars
+        isArchived: true
+        trafficFileNumber: "12345678"
+        source: rta
+        versionHash: 2fdc0177057d3a5c6c2c0821e01f4fa8d90f9a3bb7afd82b0db526af98d68de8
+        isActive: true
+        createdAt: 2020-04-04T16:04:04Z
+        createdBy: tars
+        imageUrl: /agencies/did:rta:1021252/7c96c336f65e2.png
+        name:
+          ar: عربي
+          en: English
+        tradeLicense:
+          expiryDate: 2000-01-23T04:56:07.000+00:00
+          issuedDate: 2000-01-23T04:56:07.000+00:00
+          licenseNo: "456789"
+        details:
+          attachments:
+          - reference: did:in:2232124123
+            label: passport
+            url: /attachments/582342345
+            hash: 4e76434eea3c9d9cf9cb10bbf3f4a74b
+          - reference: did:in:2232124123
+            label: passport
+            url: /attachments/582342345
+            hash: 4e76434eea3c9d9cf9cb10bbf3f4a74b
+          activity:
+          - effectiveEndDate: 2000-01-23T04:56:07.000+00:00
+            code: "101"
+            name:
+              ar: عربي
+              en: English
+            effectiveStartDate: 2000-01-23T04:56:07.000+00:00
+            status: ACTIVE
+          - effectiveEndDate: 2000-01-23T04:56:07.000+00:00
+            code: "101"
+            name:
+              ar: عربي
+              en: English
+            effectiveStartDate: 2000-01-23T04:56:07.000+00:00
+            status: ACTIVE
+          partners:
+          - passportNumber: "791234567"
+            effectiveEndDate: 2000-01-23T04:56:07.000+00:00
+            partnerNo: "10088"
+            residenceNumber: "100"
+            nationality: United Kingdom
+            legalType: Partner
+            name:
+              ar: عربي
+              en: English
+            effectiveStartDate: 2000-01-23T04:56:07.000+00:00
+            emiratesId: "1122646554"
+            percentOwnership: 100
+            birthDate: 1959-05-23
+            personCategory: Person
+          - passportNumber: "791234567"
+            effectiveEndDate: 2000-01-23T04:56:07.000+00:00
+            partnerNo: "10088"
+            residenceNumber: "100"
+            nationality: United Kingdom
+            legalType: Partner
+            name:
+              ar: عربي
+              en: English
+            effectiveStartDate: 2000-01-23T04:56:07.000+00:00
+            emiratesId: "1122646554"
+            percentOwnership: 100
+            birthDate: 1959-05-23
+            personCategory: Person
+          organization:
+            licenseType:
+              ar: عربي
+              en: English
+            issuedDate: 2000-01-23T04:56:07.000+00:00
+            legalType:
+              ar: عربي
+              en: English
+            representedBy:
+              ar: عربي
+              en: English
+            expriyDate: 2000-01-23T04:56:07.000+00:00
+            classDescription:
+              ar: عربي
+              en: English
+          contact:
+            emails:
+            - label: personal
+              email: john.doe@example.com
+              preferred: true
+            - label: personal
+              email: john.doe@example.com
+              preferred: true
+            addresses:
+            - area:
+                code: code
+                name:
+                  ar: عربي
+                  en: English
+              country:
+                code: code
+                name:
+                  ar: عربي
+                  en: English
+              address:
+                ar: عربي
+                en: English
+              city:
+                code: code
+                name:
+                  ar: عربي
+                  en: English
+              postalCode: "9226"
+              label: work
+              makani: 24330 87031
+              community:
+                code: code
+                name:
+                  ar: عربي
+                  en: English
+              building:
+                code: code
+                name:
+                  ar: عربي
+                  en: English
+              poBox: "9226"
+              unit:
+                code: code
+                name:
+                  ar: عربي
+                  en: English
+              emirate:
+                code: code
+                name:
+                  ar: عربي
+                  en: English
+              geoLocation:
+                latitude: 25.1892807
+                longitude: 55.2561466
+              street:
+                code: code
+                name:
+                  ar: عربي
+                  en: English
+              subArea:
+                code: code
+                name:
+                  ar: عربي
+                  en: English
+              region:
+                code: code
+                name:
+                  ar: عربي
+                  en: English
+              preferred: true
+            - area:
+                code: code
+                name:
+                  ar: عربي
+                  en: English
+              country:
+                code: code
+                name:
+                  ar: عربي
+                  en: English
+              address:
+                ar: عربي
+                en: English
+              city:
+                code: code
+                name:
+                  ar: عربي
+                  en: English
+              postalCode: "9226"
+              label: work
+              makani: 24330 87031
+              community:
+                code: code
+                name:
+                  ar: عربي
+                  en: English
+              building:
+                code: code
+                name:
+                  ar: عربي
+                  en: English
+              poBox: "9226"
+              unit:
+                code: code
+                name:
+                  ar: عربي
+                  en: English
+              emirate:
+                code: code
+                name:
+                  ar: عربي
+                  en: English
+              geoLocation:
+                latitude: 25.1892807
+                longitude: 55.2561466
+              street:
+                code: code
+                name:
+                  ar: عربي
+                  en: English
+              subArea:
+                code: code
+                name:
+                  ar: عربي
+                  en: English
+              region:
+                code: code
+                name:
+                  ar: عربي
+                  en: English
+              preferred: true
+            phones:
+            - extension: "1234"
+              phone: "43435353"
+              countryCode: "971"
+              label: work
+              preferred: true
+            - extension: "1234"
+              phone: "43435353"
+              countryCode: "971"
+              label: work
+              preferred: true
+          commerceRegistry:
+            nominalCapital: "1300000"
+            mainLicenseNumber: "207765"
+            cancelDate: 2011-01-31T00:00:00+04:00
+            legalType: Limited Liability Company(LLC)
+            companyName:
+              ar: عربي
+              en: English
+            expiryDate: 2011-01-31T00:00:00+04:00
+            ucrNumber: "21"
+            nationality: United Arab Emirates
+            commerceNumber: "40209"
+            commerceRegisterType: Company with Commerce Registry
+            issueDate: 1991-10-14T00:00:00+04:00
+            registerSerialNumber: "8775"
+            paidUpCapital: "1300000"
+          permit:
+            reference: "12345678"
+            expiryDate: 2000-01-23T04:56:07.000+00:00
+            issuedDate: 2000-01-23T04:56:07.000+00:00
+            authorityName:
+              ar: عربي
+              en: English
+            owners:
+            - owners
+            - owners
+            permitNo: "12345678"
+            managers:
+            - managers
+            - managers
+        id: 1
+        category: A
+        did: did:rta:1021252
+        status: ACTIVE
+        updatedAt: 2020-04-04T16:04:04Z
+      properties:
+        id:
+          description: "Unique Identifier for the Agency. Autogenerated, not supplied\
+            \ by the consumer."
+          example: 1
+          format: int64
+          type: integer
+        did:
+          description: Decentralized Identifier for the Agency
+          example: did:rta:1021252
+          type: string
+        source:
+          description: Source for the Decentralized ID
+          example: rta
+          type: string
+        sourceKey:
+          description: Natural Key from the Source
+          example: "1021252"
+          type: string
+        versionHash:
+          description: Hash of all trackable attributes
+          example: 2fdc0177057d3a5c6c2c0821e01f4fa8d90f9a3bb7afd82b0db526af98d68de8
+          type: string
+        name:
+          $ref: '#/components/schemas/MultiLang'
+        chainName:
+          $ref: '#/components/schemas/MultiLang'
+        parent:
+          $ref: '#/components/schemas/AgencyHeader'
+        trafficFileNumber:
+          description: Traffic File Number of the Agency issued by RTA
+          example: "12345678"
+          type: string
+        tradeLicense:
+          $ref: '#/components/schemas/TradeLicense'
+        category:
+          description: Category of the Agency
+          enum:
+          - A
+          - B
+          - C
+          - D
+          example: A
+          type: string
+        imageUrl:
+          description: Image URL
+          example: /agencies/did:rta:1021252/7c96c336f65e2.png
+          type: string
+        status:
+          description: Status of the Agency
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - ARCHIVED
+          example: ACTIVE
+          type: string
+        isActive:
+          description: Check with Agency is Active
+          example: true
+          type: boolean
+        isArchived:
+          description: Check with Agency is Archived
+          example: true
+          type: boolean
+        createdBy:
+          description: Audit Field - Created By
+          example: tars
+          type: string
+        updatedBy:
+          description: Audit Field - Updated By
+          example: tars
+          type: string
+        createdAt:
+          description: Audit Field - Created Timestamp
+          example: 2020-04-04T16:04:04Z
+          format: date-time
+          type: string
+        updatedAt:
+          description: Audit Field - Updated Timestamp
+          example: 2020-04-04T16:04:04Z
+          format: date-time
+          type: string
+        details:
+          $ref: '#/components/schemas/AgencyDetails'
+      type: object
+    AgencyDetails:
+      description: Agency Details
+      example:
+        attachments:
+        - reference: did:in:2232124123
+          label: passport
+          url: /attachments/582342345
+          hash: 4e76434eea3c9d9cf9cb10bbf3f4a74b
+        - reference: did:in:2232124123
+          label: passport
+          url: /attachments/582342345
+          hash: 4e76434eea3c9d9cf9cb10bbf3f4a74b
+        activity:
+        - effectiveEndDate: 2000-01-23T04:56:07.000+00:00
+          code: "101"
+          name:
+            ar: عربي
+            en: English
+          effectiveStartDate: 2000-01-23T04:56:07.000+00:00
+          status: ACTIVE
+        - effectiveEndDate: 2000-01-23T04:56:07.000+00:00
+          code: "101"
+          name:
+            ar: عربي
+            en: English
+          effectiveStartDate: 2000-01-23T04:56:07.000+00:00
+          status: ACTIVE
+        partners:
+        - passportNumber: "791234567"
+          effectiveEndDate: 2000-01-23T04:56:07.000+00:00
+          partnerNo: "10088"
+          residenceNumber: "100"
+          nationality: United Kingdom
+          legalType: Partner
+          name:
+            ar: عربي
+            en: English
+          effectiveStartDate: 2000-01-23T04:56:07.000+00:00
+          emiratesId: "1122646554"
+          percentOwnership: 100
+          birthDate: 1959-05-23
+          personCategory: Person
+        - passportNumber: "791234567"
+          effectiveEndDate: 2000-01-23T04:56:07.000+00:00
+          partnerNo: "10088"
+          residenceNumber: "100"
+          nationality: United Kingdom
+          legalType: Partner
+          name:
+            ar: عربي
+            en: English
+          effectiveStartDate: 2000-01-23T04:56:07.000+00:00
+          emiratesId: "1122646554"
+          percentOwnership: 100
+          birthDate: 1959-05-23
+          personCategory: Person
+        organization:
+          licenseType:
+            ar: عربي
+            en: English
+          issuedDate: 2000-01-23T04:56:07.000+00:00
+          legalType:
+            ar: عربي
+            en: English
+          representedBy:
+            ar: عربي
+            en: English
+          expriyDate: 2000-01-23T04:56:07.000+00:00
+          classDescription:
+            ar: عربي
+            en: English
+        contact:
+          emails:
+          - label: personal
+            email: john.doe@example.com
+            preferred: true
+          - label: personal
+            email: john.doe@example.com
+            preferred: true
+          addresses:
+          - area:
+              code: code
+              name:
+                ar: عربي
+                en: English
+            country:
+              code: code
+              name:
+                ar: عربي
+                en: English
+            address:
+              ar: عربي
+              en: English
+            city:
+              code: code
+              name:
+                ar: عربي
+                en: English
+            postalCode: "9226"
+            label: work
+            makani: 24330 87031
+            community:
+              code: code
+              name:
+                ar: عربي
+                en: English
+            building:
+              code: code
+              name:
+                ar: عربي
+                en: English
+            poBox: "9226"
+            unit:
+              code: code
+              name:
+                ar: عربي
+                en: English
+            emirate:
+              code: code
+              name:
+                ar: عربي
+                en: English
+            geoLocation:
+              latitude: 25.1892807
+              longitude: 55.2561466
+            street:
+              code: code
+              name:
+                ar: عربي
+                en: English
+            subArea:
+              code: code
+              name:
+                ar: عربي
+                en: English
+            region:
+              code: code
+              name:
+                ar: عربي
+                en: English
+            preferred: true
+          - area:
+              code: code
+              name:
+                ar: عربي
+                en: English
+            country:
+              code: code
+              name:
+                ar: عربي
+                en: English
+            address:
+              ar: عربي
+              en: English
+            city:
+              code: code
+              name:
+                ar: عربي
+                en: English
+            postalCode: "9226"
+            label: work
+            makani: 24330 87031
+            community:
+              code: code
+              name:
+                ar: عربي
+                en: English
+            building:
+              code: code
+              name:
+                ar: عربي
+                en: English
+            poBox: "9226"
+            unit:
+              code: code
+              name:
+                ar: عربي
+                en: English
+            emirate:
+              code: code
+              name:
+                ar: عربي
+                en: English
+            geoLocation:
+              latitude: 25.1892807
+              longitude: 55.2561466
+            street:
+              code: code
+              name:
+                ar: عربي
+                en: English
+            subArea:
+              code: code
+              name:
+                ar: عربي
+                en: English
+            region:
+              code: code
+              name:
+                ar: عربي
+                en: English
+            preferred: true
+          phones:
+          - extension: "1234"
+            phone: "43435353"
+            countryCode: "971"
+            label: work
+            preferred: true
+          - extension: "1234"
+            phone: "43435353"
+            countryCode: "971"
+            label: work
+            preferred: true
+        commerceRegistry:
+          nominalCapital: "1300000"
+          mainLicenseNumber: "207765"
+          cancelDate: 2011-01-31T00:00:00+04:00
+          legalType: Limited Liability Company(LLC)
+          companyName:
+            ar: عربي
+            en: English
+          expiryDate: 2011-01-31T00:00:00+04:00
+          ucrNumber: "21"
+          nationality: United Arab Emirates
+          commerceNumber: "40209"
+          commerceRegisterType: Company with Commerce Registry
+          issueDate: 1991-10-14T00:00:00+04:00
+          registerSerialNumber: "8775"
+          paidUpCapital: "1300000"
+        permit:
+          reference: "12345678"
+          expiryDate: 2000-01-23T04:56:07.000+00:00
+          issuedDate: 2000-01-23T04:56:07.000+00:00
+          authorityName:
+            ar: عربي
+            en: English
+          owners:
+          - owners
+          - owners
+          permitNo: "12345678"
+          managers:
+          - managers
+          - managers
+      properties:
+        organization:
+          $ref: '#/components/schemas/AgencyOrganization'
+        permit:
+          $ref: '#/components/schemas/AgencyPermit'
+        partners:
+          description: List of Partners in the Agency
+          items:
+            $ref: '#/components/schemas/AgencyPartner'
+          type: array
+        contact:
+          $ref: '#/components/schemas/Contact'
+        attachments:
+          description: Attachments
+          items:
+            $ref: '#/components/schemas/Attachment'
+          type: array
+        activity:
+          description: Activity
+          items:
+            $ref: '#/components/schemas/AgencyActivity'
+          type: array
+        commerceRegistry:
+          $ref: '#/components/schemas/AgencyCommerceRegistry'
+      type: object
+    AgencyWithTransactions:
+      example:
+        sourceKey: "1021252"
+        chainName:
+          ar: عربي
+          en: English
+        parent:
+          sourceKey: "1210141"
+          chainName:
+            ar: عربي
+            en: English
+          name:
+            ar: عربي
+            en: English
+          id: 1
+          source: ded
+          versionHash: 2fdc0177057d3a5c6c2c0821e01f4fa8d90f9a3bb7afd82b0db526af98d68de8
+          did: did:ded:1210141
+          tradeLicenseNumber: "12764548"
+        updatedBy: tars
+        isArchived: true
+        trafficFileNumber: "12345678"
+        source: rta
+        versionHash: 2fdc0177057d3a5c6c2c0821e01f4fa8d90f9a3bb7afd82b0db526af98d68de8
+        isActive: true
+        transactions:
+        - createdAt: 2020-06-01T12:30:30Z
+          createdBy: john.doe
+          kind: REGULATORY_REVIEW
+          details:
+            meetingPlace: Jebel Ali Police Station
+          remarks: Good
+        - createdAt: 2020-06-01T12:30:30Z
+          createdBy: john.doe
+          kind: REGULATORY_REVIEW
+          details:
+            meetingPlace: Jebel Ali Police Station
+          remarks: Good
+        createdAt: 2020-04-04T16:04:04Z
+        createdBy: tars
+        imageUrl: /agencies/did:rta:1021252/7c96c336f65e2.png
+        name:
+          ar: عربي
+          en: English
+        tradeLicense:
+          expiryDate: 2000-01-23T04:56:07.000+00:00
+          issuedDate: 2000-01-23T04:56:07.000+00:00
+          licenseNo: "456789"
+        id: 1
+        category: A
+        did: did:rta:1021252
+        status: ACTIVE
+        updatedAt: 2020-04-04T16:04:04Z
+      properties:
+        id:
+          description: "Unique Identifier for the Agency. Autogenerated, not supplied\
+            \ by the consumer."
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        did:
+          description: Decentralized Identifier for the Agency
+          example: did:rta:1021252
+          readOnly: true
+          type: string
+        source:
+          description: Source for the Decentralized ID
+          example: rta
+          readOnly: true
+          type: string
+        sourceKey:
+          description: Natural Key from the Source
+          example: "1021252"
+          readOnly: true
+          type: string
+        versionHash:
+          description: Hash of all trackable attributes
+          example: 2fdc0177057d3a5c6c2c0821e01f4fa8d90f9a3bb7afd82b0db526af98d68de8
+          readOnly: true
+          type: string
+        name:
+          $ref: '#/components/schemas/MultiLang'
+        chainName:
+          $ref: '#/components/schemas/MultiLang'
+        parent:
+          $ref: '#/components/schemas/AgencyHeader'
+        trafficFileNumber:
+          description: Traffic File Number of the Agency issued by RTA
+          example: "12345678"
+          type: string
+        tradeLicense:
+          $ref: '#/components/schemas/TradeLicense'
+        category:
+          description: Category of the Agency
+          enum:
+          - A
+          - B
+          - C
+          - D
+          example: A
+          type: string
+        imageUrl:
+          description: Image URL
+          example: /agencies/did:rta:1021252/7c96c336f65e2.png
+          type: string
+        status:
+          description: Status of the Agency
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - ARCHIVED
+          example: ACTIVE
+          type: string
+        isActive:
+          description: Check with Agency is Active
+          example: true
+          type: boolean
+        isArchived:
+          description: Check with Agency is Archived
+          example: true
+          type: boolean
+        createdBy:
+          description: Audit Field - Created By
+          example: tars
+          type: string
+        updatedBy:
+          description: Audit Field - Updated By
+          example: tars
+          type: string
+        createdAt:
+          description: Audit Field - Created Timestamp
+          example: 2020-04-04T16:04:04Z
+          format: date-time
+          type: string
+        updatedAt:
+          description: Audit Field - Updated Timestamp
+          example: 2020-04-04T16:04:04Z
+          format: date-time
+          type: string
+        transactions:
+          description: Permit issued by RTA
+          items:
+            $ref: '#/components/schemas/AgencyTransaction'
+          type: array
+      type: object
+    AgencyTransaction:
+      description: Permit issued by RTA
+      example:
+        createdAt: 2020-06-01T12:30:30Z
+        createdBy: john.doe
+        kind: REGULATORY_REVIEW
+        details:
+          meetingPlace: Jebel Ali Police Station
+        remarks: Good
+      properties:
+        kind:
+          description: Kind of Transaction
+          example: REGULATORY_REVIEW
+          type: string
+        remarks:
+          description: Remarks
+          example: Good
+          type: string
+        details:
+          $ref: '#/components/schemas/AgencyTransaction_details'
+        createdBy:
+          description: Created By
+          example: john.doe
+          readOnly: true
+          type: string
+        createdAt:
+          description: Created Timestamp
+          example: 2020-06-01T12:30:30Z
+          format: date-time
+          readOnly: true
+          type: string
+      type: object
+    AgencyActivity:
+      description: Activity
+      example:
+        effectiveEndDate: 2000-01-23T04:56:07.000+00:00
+        code: "101"
+        name:
+          ar: عربي
+          en: English
+        effectiveStartDate: 2000-01-23T04:56:07.000+00:00
+        status: ACTIVE
+      properties:
+        code:
+          description: Activity Code
+          example: "101"
+          type: string
+        name:
+          $ref: '#/components/schemas/MultiLang'
+        effectiveStartDate:
+          description: Start Date of the Activity
+          format: date-time
+          type: string
+        effectiveEndDate:
+          description: End Date of the Activity
+          format: date-time
+          type: string
+        status:
+          description: Status of activity
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - ARCHIVED
+          example: ACTIVE
+          type: string
+      type: object
+    AgencyCommerceRegistry:
+      description: CommerceRegistry
+      example:
+        nominalCapital: "1300000"
+        mainLicenseNumber: "207765"
+        cancelDate: 2011-01-31T00:00:00+04:00
+        legalType: Limited Liability Company(LLC)
+        companyName:
+          ar: عربي
+          en: English
+        expiryDate: 2011-01-31T00:00:00+04:00
+        ucrNumber: "21"
+        nationality: United Arab Emirates
+        commerceNumber: "40209"
+        commerceRegisterType: Company with Commerce Registry
+        issueDate: 1991-10-14T00:00:00+04:00
+        registerSerialNumber: "8775"
+        paidUpCapital: "1300000"
+      properties:
+        registerSerialNumber:
+          description: Agency Commerce Registry Serial Number
+          example: "8775"
+          type: string
+        ucrNumber:
+          description: UCR Number
+          example: "21"
+          type: string
+        commerceNumber:
+          description: Agency Commerce Number
+          example: "40209"
+          type: string
+        companyName:
+          $ref: '#/components/schemas/MultiLang'
+        mainLicenseNumber:
+          description: Agency Main License Number
+          example: "207765"
+          type: string
+        commerceRegisterType:
+          description: Agency Commerce Registry Type
+          example: Company with Commerce Registry
+          type: string
+        legalType:
+          description: Legal Type
+          example: Limited Liability Company(LLC)
+          type: string
+        nationality:
+          description: Nationality
+          example: United Arab Emirates
+          type: string
+        issueDate:
+          description: Issued Date
+          example: 1991-10-14T00:00:00+04:00
+          type: string
+        expiryDate:
+          description: Expiry Date
+          example: 2011-01-31T00:00:00+04:00
+          type: string
+        cancelDate:
+          description: Cancel date
+          example: 2011-01-31T00:00:00+04:00
+          type: string
+        paidUpCapital:
+          description: Paid Up Capital
+          example: "1300000"
+          type: string
+        nominalCapital:
+          description: Nominal Capital
+          example: "1300000"
+          type: string
+      type: object
+    AgencyGroupRequest:
+      type: object
+    SimCard:
+      example:
+        trafficFileNo: trafficFileNo
+        tradeLicenseNo: tradeLicenseNo
+        simCardReceived: simCardReceived
+      properties:
+        trafficFileNo:
+          description: Traffic File Number
+          type: string
+        tradeLicenseNo:
+          description: Trade License Number
+          type: string
+        simCardReceived:
+          description: Sim Card Received
+          type: string
+      required:
+      - simCardReceived
+      - tradeLicenseNo
+      - trafficFileNo
+      type: object
+    SimCardResponse:
+      example:
+        statusType: statusType
+        statusDetails: statusDetails
+        statusCode: statusCode
+      properties:
+        statusCode:
+          description: Status Code
+          type: string
+        statusType:
+          description: Status Type
+          type: string
+        statusDetails:
+          description: Status Details
+          type: string
+      type: object
+    AgencyRemarks:
+      example:
+        createdAt: createdAt
+        remarks: remarks
+      properties:
+        createdAt:
+          type: string
+        remarks:
+          type: string
+      type: object
+    AgencyTransaction_details:
+      example:
+        meetingPlace: Jebel Ali Police Station
+      properties:
+        meetingPlace:
+          description: Data stored by consumer for the workflow step
+          example: Jebel Ali Police Station
+          type: string
+      type: object
+  securitySchemes:
+    TARS:
+      flows:
+        clientCredentials:
+          scopes:
+            api:tars: Access to TARS APIs
+          tokenUrl: https://$(catalog.url)/tars/oauth2/token
+      type: oauth2
+      x-ibm-oauth-provider: tars
+    clientIdHeader:
+      in: header
+      name: X-IBM-Client-Id
+      type: apiKey
+x-ibm-configuration:
+  gateway: datapower-api-gateway
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true
+  cors:
+    enabled: true
+  assembly:
+    execute:
+    - gatewayscript:
+        version: 2.0.0
+        title: Set Client Id
+        source: |-
+          var apim=require('apim');
+          var id=apim.getvariable('request.headers.X-IBM-Client-Id');
+          apim.setvariable('message.headers.clientId',id);
+    - invoke:
+        version: 2.0.0
+        title: Authorize
+        header-control:
+          type: blacklist
+          values: []
+        parameter-control:
+          type: whitelist
+          values: []
+        timeout: 60
+        verb: GET
+        cache-response: protocol
+        cache-ttl: 900
+        stop-on-error: []
+        target-url: $(authorization-url)
+        keep-payload: false
+    - switch:
+        version: 2.0.0
+        title: switch
+        case:
+        - condition: ($statusCode() != 200)
+          execute:
+          - throw:
+              version: 2.0.0
+              title: Token_Error
+              name: Token_Error
+    - parse:
+        version: 2.0.0
+        title: parse
+        parse-settings-reference:
+          default: apic-default-parsesettings
+    - gatewayscript:
+        version: 2.0.0
+        title: Request
+        source: |-
+          var apim = require('apim');
+          var json = apim.getvariable('request.body');
+          var strtoken=JSON.stringify(json);
+          var authStr = apim.getvariable('message.headers.tempAuth');
+          context.message.header.set('Authorization',authStr);
+
+          var id=apim.getvariable('request.headers.X-IBM-Client-Id');
+          context.message.header.set('X-IBM-Client-Id',id);
+          session.output.write(json);
+    - set-variable:
+        version: 2.0.0
+        title: set-variable
+        actions:
+        - clear: message.headers.tempAuth
+    - switch:
+        version: 2.0.0
+        title: switch
+        case:
+        - condition: ($operationID() = 'retrieveAgencyDetails')
+          execute:
+          - invoke:
+              version: 2.0.0
+              title: Retrieve Agency
+              header-control:
+                type: blacklist
+                values: []
+              parameter-control:
+                type: whitelist
+                values: []
+              timeout: 60
+              verb: keep
+              cache-response: protocol
+              cache-ttl: 900
+              stop-on-error: []
+              target-url: $(masters-url)/agencies/$(request.parameters.did)/details
+        - condition: ($operationID() = 'updateAgency' or $operationID() = 'retrieveAgencyMasters'
+            or $operationID() = 'deleteAgency')
+          execute:
+          - invoke:
+              version: 2.0.0
+              title: Update Agency
+              header-control:
+                type: blocklist
+                values: []
+              parameter-control:
+                type: allowlist
+                values: []
+              timeout: 60
+              verb: keep
+              cache-response: protocol
+              cache-ttl: 900
+              stop-on-error: []
+              target-url: $(masters-url)/agencies/$(request.parameters.did)
+              persistent-connection: true
+        - condition: ($operationID() = 'archiveAgency')
+          execute:
+          - invoke:
+              version: 2.0.0
+              title: Archive
+              header-control:
+                type: blacklist
+                values: []
+              parameter-control:
+                type: whitelist
+                values: []
+              timeout: 60
+              verb: keep
+              cache-response: protocol
+              cache-ttl: 900
+              stop-on-error: []
+              target-url: $(masters-url)/agencies/$(request.parameters.did)/events/archive
+        - condition: ($operationID() = 'unarchiveAgency')
+          execute:
+          - invoke:
+              version: 2.0.0
+              title: Unarchive
+              header-control:
+                type: blocklist
+                values: []
+              parameter-control:
+                type: allowlist
+                values: []
+              timeout: 60
+              verb: keep
+              cache-response: protocol
+              cache-ttl: 900
+              stop-on-error: []
+              target-url: $(masters-url)/agencies/$(request.parameters.did)/events/unarchive
+              persistent-connection: true
+        - condition: ($operationID() = 'closeAgency')
+          execute:
+          - invoke:
+              version: 2.0.0
+              title: Close
+              header-control:
+                type: blacklist
+                values: []
+              parameter-control:
+                type: whitelist
+                values: []
+              timeout: 60
+              verb: keep
+              cache-response: protocol
+              cache-ttl: 900
+              stop-on-error: []
+              target-url: $(masters-url)/agencies/$(request.parameters.did)/events/close
+        - condition: ($operationID() = 'updateAgencyContacts')
+          execute:
+          - invoke:
+              version: 2.0.0
+              title: Update Contacts
+              header-control:
+                type: blacklist
+                values: []
+              parameter-control:
+                type: whitelist
+                values: []
+              timeout: 60
+              verb: keep
+              cache-response: protocol
+              cache-ttl: 900
+              stop-on-error: []
+              target-url: $(masters-url)/agencies/$(request.parameters.did)/contacts
+        - condition: ($operationID() = 'retrieveAgencyTransactions')
+          execute:
+          - invoke:
+              version: 2.0.0
+              title: Agency Transactions
+              header-control:
+                type: blacklist
+                values: []
+              parameter-control:
+                type: whitelist
+                values: []
+              timeout: 60
+              verb: keep
+              cache-response: protocol
+              cache-ttl: 900
+              stop-on-error: []
+              target-url: $(bc-url)/agencies/$(request.parameters.did)
+        - condition: ($operationID() = 'listBranches')
+          execute:
+          - invoke:
+              version: 2.0.0
+              title: Retrieve Branches
+              backend-type: detect
+              header-control:
+                type: blocklist
+                values: []
+              parameter-control:
+                type: allowlist
+                values: []
+              timeout: 60
+              verb: keep
+              use-http-10: false
+              chunked-uploads: true
+              cache-response: protocol
+              cache-ttl: 900
+              stop-on-error: []
+              target-url: $(elk-url)/agencies/$(request.parameters.agencyDid)/branches
+        - condition: ($operationID() = 'getBranch')
+          execute:
+          - invoke:
+              version: 2.0.0
+              title: Update Branches
+              backend-type: detect
+              header-control:
+                type: blocklist
+                values: []
+              parameter-control:
+                type: allowlist
+                values: []
+              timeout: 60
+              verb: keep
+              use-http-10: false
+              chunked-uploads: true
+              cache-response: protocol
+              cache-ttl: 900
+              stop-on-error: []
+              target-url: $(bc-url)/agencies/$(request.parameters.agencyDid)/branches/$(request.parameters.branchDid)
+        - condition: ($operationID() = 'linkAgencyBranch')
+          execute:
+          - invoke:
+              version: 2.0.0
+              title: LinkAgency Branch
+              backend-type: detect
+              header-control:
+                type: blocklist
+                values: []
+              parameter-control:
+                type: allowlist
+                values: []
+              timeout: 60
+              verb: keep
+              use-http-10: false
+              chunked-uploads: true
+              cache-response: protocol
+              cache-ttl: 900
+              stop-on-error: []
+              target-url: $(bc-url)/agencies/$(request.parameters.agencyDid)/branches/$(request.parameters.branchDid)/events/link
+        - condition: ($operationID() = 'unLinkAgencyBranch')
+          execute:
+          - invoke:
+              version: 2.0.0
+              title: Unlink Agency Branch
+              backend-type: detect
+              header-control:
+                type: blocklist
+                values: []
+              parameter-control:
+                type: allowlist
+                values: []
+              timeout: 60
+              verb: keep
+              use-http-10: false
+              chunked-uploads: true
+              cache-response: protocol
+              cache-ttl: 900
+              stop-on-error: []
+              target-url: $(bc-url)/agencies/$(request.parameters.agencyDid)/branches/$(request.parameters.branchDid)/events/unlink
+        - condition: ($operationID() = 'updateSimStatus')
+          execute:
+          - invoke:
+              version: 2.0.0
+              title: SimCard
+              backend-type: detect
+              header-control:
+                type: blocklist
+                values: []
+              parameter-control:
+                type: allowlist
+                values: []
+              timeout: 60
+              verb: keep
+              use-http-10: false
+              chunked-uploads: true
+              cache-response: protocol
+              cache-ttl: 900
+              stop-on-error: []
+              target-url: $(eip-url)/agencies/sim-status
+        - condition: ($operationID() = 'blockAgency')
+          execute:
+          - invoke:
+              version: 2.2.0
+              title: Block Agency
+              backend-type: detect
+              header-control:
+                type: blocklist
+                values: []
+              parameter-control:
+                type: allowlist
+                values: []
+              http-version: HTTP/1.1
+              timeout: 60
+              verb: keep
+              chunked-uploads: true
+              persistent-connection: true
+              cache-response: protocol
+              cache-ttl: 900
+              stop-on-error: []
+              graphql-send-type: detect
+              websocket-upgrade: false
+              target-url: $(masters-url)/agencies/$(request.parameters.agencyDid)/events/block
+        - condition: ($operationID() = 'unblockAgency')
+          execute:
+          - invoke:
+              version: 2.2.0
+              title: Unblock Agency
+              backend-type: detect
+              header-control:
+                type: blocklist
+                values: []
+              parameter-control:
+                type: allowlist
+                values: []
+              http-version: HTTP/1.1
+              timeout: 60
+              verb: keep
+              chunked-uploads: true
+              persistent-connection: true
+              cache-response: protocol
+              cache-ttl: 900
+              stop-on-error: []
+              graphql-send-type: detect
+              websocket-upgrade: false
+              target-url: $(masters-url)/agencies/$(request.parameters.agencyDid)/events/unblock
+        - condition: ($operationID() = 'updateAgencySyncByDid')
+          execute:
+          - invoke:
+              version: 2.2.0
+              title: Update Agency Sync
+              backend-type: detect
+              header-control:
+                type: blocklist
+                values: []
+              parameter-control:
+                type: allowlist
+                values: []
+              http-version: HTTP/1.1
+              timeout: 60
+              verb: keep
+              chunked-uploads: true
+              persistent-connection: true
+              cache-response: protocol
+              cache-ttl: 900
+              stop-on-error: []
+              graphql-send-type: detect
+              websocket-upgrade: false
+              target-url: $(masters-url)/agencies/$(request.parameters.did)/events/sync
+    - redact:
+        version: 2.0.0
+        title: redact
+        redactions:
+        - action: redact
+          path: '**.Authorization'
+    - switch:
+        version: 2.0.0
+        title: switch
+        case:
+        - condition: ($statusCode() = 200)
+          execute: []
+        - condition: ($statusCode() != 200 and ($operationID() = 'retrieveAgencyTransactions'
+            or $operationID() = 'unLinkAgencyBranch' or $operationID() = 'linkAgencyBranch'
+            or $operationID() = 'getBranch'))
+          execute:
+          - gatewayscript:
+              version: 2.0.0
+              title: Set Error
+              source: "var apim = require('apim');\nvar json = apim.getvariable('message.status');\n\
+                \n \n\nvar code=json.code;\nvar msg=json.reason;\n\n \n\n\nvar strtoken=apim.getvariable('message.body');\n\
+                \n \n\nif(strtoken)\n{\nvar detail=strtoken.detail;\ncontext.message.header.set('detail',detail);\n\
+                }\n\n \n\ncontext.message.header.set('httpCode',code);\n\n \n\ncontext.message.header.set('httpMessage',msg);"
+          - map:
+              version: 2.0.0
+              title: map
+              inputs:
+                code:
+                  schema:
+                    type: string
+                  variable: message.headers.httpCode
+                message:
+                  schema:
+                    type: string
+                  variable: message.headers.httpMessage
+                details:
+                  schema:
+                    type: string
+                  variable: message.headers.detail
+              outputs:
+                output:
+                  schema:
+                    $ref: path/definitions/Error.yaml
+                  variable: message.body
+                  content: application/json
+              actions:
+              - set: output.httpCode
+                from: code
+              - set: output.httpMessage
+                from: message
+              - set: output.moreInformation
+                from: details
+          - set-variable:
+              version: 2.0.0
+              title: set-variable
+              actions:
+              - clear: message.headers.httpCode
+              - clear: message.headers.httpMessage
+              - clear: message.headers.detail
+        - otherwise: []
+    catch:
+    - errors:
+      - Token_Error
+      execute:
+      - map:
+          version: 2.0.0
+          title: Map Token Error
+          inputs:
+            input:
+              schema:
+                $ref: path/definitions/Error.yaml
+              variable: message.body
+              content: application/json
+          outputs:
+            output:
+              schema:
+                $ref: path/definitions/Error.yaml
+              variable: message.body
+              content: application/json
+          actions:
+          - set: output.httpMessage
+            value: '"Unauthorized"'
+          - set: output.httpCode
+            value: '''401'''
+          - set: output.moreInformation
+            from: input.moreInformation
+          options:
+            mapEnablePostProcessingJSON: false
+            mapEmulateV4EmptyJSONObject: false
+            mapEmulateV4DefaultRequiredProps: false
+            mapReferenceLimit: 1
+      - set-variable:
+          version: 2.0.0
+          title: Set Status Code
+          actions:
+          - set: message.status.code
+            value: "401"
+            type: string
+    finally: []
+  properties: {}
+  application-authentication:
+    certificate: false
+  activity-log:
+    success-content: payload
+    error-content: payload
+    enabled: true
+  buffering: true
+  catalogs: {}
+

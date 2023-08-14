@@ -1,0 +1,53 @@
+type: object
+properties:
+  registerSerialNumber:
+    type: string
+    description: Agency Commerce Registry Serial Number
+    example: '8775'
+  ucrNumber:
+    type: string
+    description: UCR Number
+    example: '21'
+  commerceNumber:
+    type: string
+    description: Agency Commerce Number
+    example: '40209'
+  companyName:
+    $ref: .\MultiLang.yaml
+  mainLicenseNumber:
+    type: string
+    description: Agency Main License Number
+    example: '207765'
+  commerceRegisterType:
+    type: string
+    description: Agency Commerce Registry Type
+    example: Company with Commerce Registry
+  legalType:
+    type: string
+    description: Legal Type
+    example: Limited Liability Company(LLC)
+  nationality:
+    type: string
+    description: Nationality
+    example: United Arab Emirates
+  issueDate:
+    type: string
+    description: Issued Date
+    example: '1991-10-14T00:00:00+04:00'
+  expiryDate:
+    type: string
+    description: Expiry Date
+    example: '2011-01-31T00:00:00+04:00'
+  cancelDate:
+    type: string
+    description: Cancel date
+    example: '2011-01-31T00:00:00+04:00'
+  paidUpCapital:
+    type: string
+    description: Paid Up Capital
+    example: '1300000'
+  nominalCapital:
+    type: string
+    description: Nominal Capital
+    example: '1300000'
+description: CommerceRegistry

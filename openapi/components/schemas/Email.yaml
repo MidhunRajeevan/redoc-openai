@@ -1,4 +1,15 @@
-description: User email address
-type: string
-format: test
-example: john.smith@example.com
+type: object
+properties:
+  label:
+    type: string
+    description: Email Label
+    example: personal
+  email:
+    type: string
+    description: Email
+    example: john.doe@example.com
+  preferred:
+    type: boolean
+    description: Preferred Email Flag
+    example: true
+description: Emails

@@ -1,0 +1,11 @@
+type: object
+properties:
+  httpCode:
+    type: string
+    description: Error code
+  httpMessage:
+    type: string
+    description: Error description
+  moreInformation:
+    type: string
+    description: Detailed error description

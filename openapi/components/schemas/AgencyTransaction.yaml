@@ -1,0 +1,29 @@
+type: object
+properties:
+  kind:
+    type: string
+    description: Kind of Transaction
+    example: REGULATORY_REVIEW
+  remarks:
+    type: string
+    description: Remarks
+    example: Good
+  details:
+    type: object
+    properties:
+      meetingPlace:
+        type: string
+        description: Data stored by consumer for the workflow step
+        example: Jebel Ali Police Station
+  createdBy:
+    type: string
+    description: Created By
+    readOnly: true
+    example: john.doe
+  createdAt:
+    type: string
+    description: Created Timestamp
+    format: date-time
+    readOnly: true
+    example: '2020-06-01T12:30:30Z'
+description: Permit issued by RTA

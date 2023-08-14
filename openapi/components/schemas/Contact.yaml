@@ -1,0 +1,18 @@
+type: object
+properties:
+  addresses:
+    type: array
+    description: Addresses
+    items:
+      $ref: .\Address.yaml
+  phones:
+    type: array
+    description: Phones
+    items:
+      $ref: .\PhoneNoDetails.yaml
+  emails:
+    type: array
+    description: Emails
+    items:
+      $ref: .\Email.yaml
+description: Contacts

@@ -1,0 +1,15 @@
+required:
+  - simCardReceived
+  - tradeLicenseNo
+  - trafficFileNo
+type: object
+properties:
+  trafficFileNo:
+    type: string
+    description: Traffic File Number
+  tradeLicenseNo:
+    type: string
+    description: Trade License Number
+  simCardReceived:
+    type: string
+    description: Sim Card Received

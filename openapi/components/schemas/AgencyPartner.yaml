@@ -1,0 +1,50 @@
+type: object
+properties:
+  partnerNo:
+    type: string
+    description: Partner Number
+    example: '10088'
+  name:
+    $ref: .\LanguageMapper.yaml
+  emiratesId:
+    type: string
+    description: Emirtates ID
+    example: '1122646554'
+  passportNumber:
+    type: string
+    description: Passport Number
+    example: '791234567'
+  nationality:
+    type: string
+    description: Nationality of the Partner
+    example: United Kingdom
+  birthDate:
+    type: string
+    description: Date of Birth
+    example: '1959-05-23'
+  personCategory:
+    type: string
+    description: Category of the Person
+    example: Person
+  legalType:
+    type: string
+    description: Legal Type of the Partner
+    example: Partner
+  percentOwnership:
+    type: integer
+    description: Ownership Percentage
+    format: int32
+    example: 100
+  residenceNumber:
+    type: string
+    description: Residence Number
+    example: '100'
+  effectiveStartDate:
+    type: string
+    description: Effective Start Date
+    format: date-time
+  effectiveEndDate:
+    type: string
+    description: Effective End Date
+    format: date-time
+description: List of Partners in the Agency

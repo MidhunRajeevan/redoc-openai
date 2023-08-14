@@ -1,80 +1,563 @@
-openapi: 3.1.0
+openapi: 3.0.1
 info:
-  version: 1.0.0
-  title: Example.com
-  termsOfService: https://example.com/terms/
-  contact:
-    email: contact@example.com
-    url: http://example.com/contact
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-  x-logo:
-    url: https://redocly.github.io/openapi-template/logo.png
-  description: >
-    This is an **example** API to demonstrate features of the OpenAPI
-    specification.
-
-    # Introduction
-
-    This API definition is intended to to be a good starting point for
-    describing your API in [OpenAPI/Swagger
-    format](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md).
-
-    It also demonstrates features of the
-    [create-openapi-repo](https://github.com/Redocly/create-openapi-repo) tool
-    and the [Redoc](https://github.com/Redocly/Redoc) documentation engine. Beyond
-    the standard OpenAPI syntax, we use a few 
-    [vendor extensions](https://github.com/Redocly/Redoc/blob/master/docs/redoc-vendor-extensions.md).
-
-    # OpenAPI Specification
-
-    The goal of The OpenAPI Specification is to define a standard, language-agnostic interface to REST APIs which
-    allows both humans and computers to discover and understand the capabilities
-    of the service without access to source
-    code, documentation, or through network traffic inspection. When properly
-    defined via OpenAPI, a consumer can 
-    understand and interact with the remote service with a minimal amount of
-    implementation logic. Similar to what
-    interfaces have done for lower-level programming, OpenAPI removes the
-    guesswork in calling the service.
-tags:
-  - name: Echo
-    description: Example echo operations.
-  - name: User
-    description: Operations about users.
-  - name: Tag
-    description: This is a tag description.
+  title: Agency
+  description: 'Manage Agency Information '
+  version: 0.0.1
+  x-ibm-name: agency
+  x-ibm-summary: 'Manage Agency Information '
 servers:
-  - url: https://{tenant}/api/v1
-    variables:
-      tenant:
-        default: www
-        description: Your tenant id
-  - url: https://example.com/api/v1
+  - url: /
+security:
+  - clientIdHeader: []
 paths:
-  /users/{username}:
-    $ref: paths/users_{username}.yaml
-  /echo:
-    $ref: paths/echo.yaml
-  /pathItem:
-    $ref: paths/pathItem.yaml
-  /pathItemWithExamples:
-    $ref: paths/pathItemWithExamples.yaml
+  /agencies/{did}/transactions:
+    $ref: paths/agencies_{did}_transactions.yaml
+  /agencies/{did}/events/close:
+    $ref: paths/agencies_{did}_events_close.yaml
+  /agencies/{did}/events/unarchive:
+    $ref: paths/agencies_{did}_events_unarchive.yaml
+  /agencies/{did}/events/archive:
+    $ref: paths/agencies_{did}_events_archive.yaml
+  /agencies/{did}/details:
+    $ref: paths/agencies_{did}_details.yaml
+  /agencies/{did}:
+    $ref: paths/agencies_{did}.yaml
+  /agencies/{did}/contacts:
+    $ref: paths/agencies_{did}_contacts.yaml
+  /agencies/sim-status:
+    $ref: paths/agencies_sim-status.yaml
+  /agencies/{agencyDid}/branches:
+    $ref: paths/agencies_{agencyDid}_branches.yaml
+  /agencies/{agencyDid}/branches/{branchDid}:
+    $ref: paths/agencies_{agencyDid}_branches_{branchDid}.yaml
+  /agencies/{agencyDid}/branches/{branchDid}/events/unlink:
+    $ref: paths/agencies_{agencyDid}_branches_{branchDid}_events_unlink.yaml
+  /agencies/{agencyDid}/branches/{branchDid}/events/link:
+    $ref: paths/agencies_{agencyDid}_branches_{branchDid}_events_link.yaml
+  /agencies/{agencyDid}/events/block:
+    $ref: paths/agencies_{agencyDid}_events_block.yaml
+  /agencies/{agencyDid}/events/unblock:
+    $ref: paths/agencies_{agencyDid}_events_unblock.yaml
+  /agencies/{did}/events/sync:
+    $ref: paths/agencies_{did}_events_sync.yaml
 components:
   securitySchemes:
-    main_auth:
+    TARS:
       type: oauth2
       flows:
-        implicit:
-          authorizationUrl: http://example.com/api/oauth/dialog
+        clientCredentials:
+          tokenUrl: https://$(catalog.url)/tars/oauth2/token
           scopes:
-            read:users: read users info
-            write:users: modify or remove users
-    api_key:
+            api:tars: Access to TARS APIs
+      x-ibm-oauth-provider: tars
+    clientIdHeader:
       type: apiKey
+      name: X-IBM-Client-Id
       in: header
-      name: api_key
-    basic_auth:
-      type: http
-      scheme: basic
+x-ibm-configuration:
+  gateway: datapower-api-gateway
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true
+  cors:
+    enabled: true
+  assembly:
+    execute:
+      - gatewayscript:
+          version: 2.0.0
+          title: Set Client Id
+          source: |-
+            var apim=require('apim');
+            var id=apim.getvariable('request.headers.X-IBM-Client-Id');
+            apim.setvariable('message.headers.clientId',id);
+      - invoke:
+          version: 2.0.0
+          title: Authorize
+          header-control:
+            type: blacklist
+            values: []
+          parameter-control:
+            type: whitelist
+            values: []
+          timeout: 60
+          verb: GET
+          cache-response: protocol
+          cache-ttl: 900
+          stop-on-error: []
+          target-url: $(authorization-url)
+          keep-payload: false
+      - switch:
+          version: 2.0.0
+          title: switch
+          case:
+            - condition: ($statusCode() != 200)
+              execute:
+                - throw:
+                    version: 2.0.0
+                    title: Token_Error
+                    name: Token_Error
+      - parse:
+          version: 2.0.0
+          title: parse
+          parse-settings-reference:
+            default: apic-default-parsesettings
+      - gatewayscript:
+          version: 2.0.0
+          title: Request
+          source: |-
+            var apim = require('apim');
+            var json = apim.getvariable('request.body');
+            var strtoken=JSON.stringify(json);
+            var authStr = apim.getvariable('message.headers.tempAuth');
+            context.message.header.set('Authorization',authStr);
+
+            var id=apim.getvariable('request.headers.X-IBM-Client-Id');
+            context.message.header.set('X-IBM-Client-Id',id);
+            session.output.write(json);
+      - set-variable:
+          version: 2.0.0
+          title: set-variable
+          actions:
+            - clear: message.headers.tempAuth
+      - switch:
+          version: 2.0.0
+          title: switch
+          case:
+            - condition: ($operationID() = 'retrieveAgencyDetails')
+              execute:
+                - invoke:
+                    version: 2.0.0
+                    title: Retrieve Agency
+                    header-control:
+                      type: blacklist
+                      values: []
+                    parameter-control:
+                      type: whitelist
+                      values: []
+                    timeout: 60
+                    verb: keep
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    target-url: $(masters-url)/agencies/$(request.parameters.did)/details
+            - condition: >-
+                ($operationID() = 'updateAgency' or $operationID() =
+                'retrieveAgencyMasters' or $operationID() = 'deleteAgency')
+              execute:
+                - invoke:
+                    version: 2.0.0
+                    title: Update Agency
+                    header-control:
+                      type: blocklist
+                      values: []
+                    parameter-control:
+                      type: allowlist
+                      values: []
+                    timeout: 60
+                    verb: keep
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    target-url: $(masters-url)/agencies/$(request.parameters.did)
+                    persistent-connection: true
+            - condition: ($operationID() = 'archiveAgency')
+              execute:
+                - invoke:
+                    version: 2.0.0
+                    title: Archive
+                    header-control:
+                      type: blacklist
+                      values: []
+                    parameter-control:
+                      type: whitelist
+                      values: []
+                    timeout: 60
+                    verb: keep
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    target-url: >-
+                      $(masters-url)/agencies/$(request.parameters.did)/events/archive
+            - condition: ($operationID() = 'unarchiveAgency')
+              execute:
+                - invoke:
+                    version: 2.0.0
+                    title: Unarchive
+                    header-control:
+                      type: blocklist
+                      values: []
+                    parameter-control:
+                      type: allowlist
+                      values: []
+                    timeout: 60
+                    verb: keep
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    target-url: >-
+                      $(masters-url)/agencies/$(request.parameters.did)/events/unarchive
+                    persistent-connection: true
+            - condition: ($operationID() = 'closeAgency')
+              execute:
+                - invoke:
+                    version: 2.0.0
+                    title: Close
+                    header-control:
+                      type: blacklist
+                      values: []
+                    parameter-control:
+                      type: whitelist
+                      values: []
+                    timeout: 60
+                    verb: keep
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    target-url: >-
+                      $(masters-url)/agencies/$(request.parameters.did)/events/close
+            - condition: ($operationID() = 'updateAgencyContacts')
+              execute:
+                - invoke:
+                    version: 2.0.0
+                    title: Update Contacts
+                    header-control:
+                      type: blacklist
+                      values: []
+                    parameter-control:
+                      type: whitelist
+                      values: []
+                    timeout: 60
+                    verb: keep
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    target-url: $(masters-url)/agencies/$(request.parameters.did)/contacts
+            - condition: ($operationID() = 'retrieveAgencyTransactions')
+              execute:
+                - invoke:
+                    version: 2.0.0
+                    title: Agency Transactions
+                    header-control:
+                      type: blacklist
+                      values: []
+                    parameter-control:
+                      type: whitelist
+                      values: []
+                    timeout: 60
+                    verb: keep
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    target-url: $(bc-url)/agencies/$(request.parameters.did)
+            - condition: ($operationID() = 'listBranches')
+              execute:
+                - invoke:
+                    version: 2.0.0
+                    title: Retrieve Branches
+                    backend-type: detect
+                    header-control:
+                      type: blocklist
+                      values: []
+                    parameter-control:
+                      type: allowlist
+                      values: []
+                    timeout: 60
+                    verb: keep
+                    use-http-10: false
+                    chunked-uploads: true
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    target-url: >-
+                      $(elk-url)/agencies/$(request.parameters.agencyDid)/branches
+            - condition: ($operationID() = 'getBranch')
+              execute:
+                - invoke:
+                    version: 2.0.0
+                    title: Update Branches
+                    backend-type: detect
+                    header-control:
+                      type: blocklist
+                      values: []
+                    parameter-control:
+                      type: allowlist
+                      values: []
+                    timeout: 60
+                    verb: keep
+                    use-http-10: false
+                    chunked-uploads: true
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    target-url: >-
+                      $(bc-url)/agencies/$(request.parameters.agencyDid)/branches/$(request.parameters.branchDid)
+            - condition: ($operationID() = 'linkAgencyBranch')
+              execute:
+                - invoke:
+                    version: 2.0.0
+                    title: LinkAgency Branch
+                    backend-type: detect
+                    header-control:
+                      type: blocklist
+                      values: []
+                    parameter-control:
+                      type: allowlist
+                      values: []
+                    timeout: 60
+                    verb: keep
+                    use-http-10: false
+                    chunked-uploads: true
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    target-url: >-
+                      $(bc-url)/agencies/$(request.parameters.agencyDid)/branches/$(request.parameters.branchDid)/events/link
+            - condition: ($operationID() = 'unLinkAgencyBranch')
+              execute:
+                - invoke:
+                    version: 2.0.0
+                    title: Unlink Agency Branch
+                    backend-type: detect
+                    header-control:
+                      type: blocklist
+                      values: []
+                    parameter-control:
+                      type: allowlist
+                      values: []
+                    timeout: 60
+                    verb: keep
+                    use-http-10: false
+                    chunked-uploads: true
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    target-url: >-
+                      $(bc-url)/agencies/$(request.parameters.agencyDid)/branches/$(request.parameters.branchDid)/events/unlink
+            - condition: ($operationID() = 'updateSimStatus')
+              execute:
+                - invoke:
+                    version: 2.0.0
+                    title: SimCard
+                    backend-type: detect
+                    header-control:
+                      type: blocklist
+                      values: []
+                    parameter-control:
+                      type: allowlist
+                      values: []
+                    timeout: 60
+                    verb: keep
+                    use-http-10: false
+                    chunked-uploads: true
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    target-url: $(eip-url)/agencies/sim-status
+            - condition: ($operationID() = 'blockAgency')
+              execute:
+                - invoke:
+                    version: 2.2.0
+                    title: Block Agency
+                    backend-type: detect
+                    header-control:
+                      type: blocklist
+                      values: []
+                    parameter-control:
+                      type: allowlist
+                      values: []
+                    http-version: HTTP/1.1
+                    timeout: 60
+                    verb: keep
+                    chunked-uploads: true
+                    persistent-connection: true
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    graphql-send-type: detect
+                    websocket-upgrade: false
+                    target-url: >-
+                      $(masters-url)/agencies/$(request.parameters.agencyDid)/events/block
+            - condition: ($operationID() = 'unblockAgency')
+              execute:
+                - invoke:
+                    version: 2.2.0
+                    title: Unblock Agency
+                    backend-type: detect
+                    header-control:
+                      type: blocklist
+                      values: []
+                    parameter-control:
+                      type: allowlist
+                      values: []
+                    http-version: HTTP/1.1
+                    timeout: 60
+                    verb: keep
+                    chunked-uploads: true
+                    persistent-connection: true
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    graphql-send-type: detect
+                    websocket-upgrade: false
+                    target-url: >-
+                      $(masters-url)/agencies/$(request.parameters.agencyDid)/events/unblock
+            - condition: ($operationID() = 'updateAgencySyncByDid')
+              execute:
+                - invoke:
+                    version: 2.2.0
+                    title: Update Agency Sync
+                    backend-type: detect
+                    header-control:
+                      type: blocklist
+                      values: []
+                    parameter-control:
+                      type: allowlist
+                      values: []
+                    http-version: HTTP/1.1
+                    timeout: 60
+                    verb: keep
+                    chunked-uploads: true
+                    persistent-connection: true
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    graphql-send-type: detect
+                    websocket-upgrade: false
+                    target-url: >-
+                      $(masters-url)/agencies/$(request.parameters.did)/events/sync
+      - redact:
+          version: 2.0.0
+          title: redact
+          redactions:
+            - action: redact
+              path: '**.Authorization'
+      - switch:
+          version: 2.0.0
+          title: switch
+          case:
+            - condition: ($statusCode() = 200)
+              execute: []
+            - condition: >-
+                ($statusCode() != 200 and ($operationID() =
+                'retrieveAgencyTransactions' or $operationID() =
+                'unLinkAgencyBranch' or $operationID() = 'linkAgencyBranch' or
+                $operationID() = 'getBranch'))
+              execute:
+                - gatewayscript:
+                    version: 2.0.0
+                    title: Set Error
+                    source: |-
+                      var apim = require('apim');
+                      var json = apim.getvariable('message.status');
+
+                       
+
+                      var code=json.code;
+                      var msg=json.reason;
+
+                       
+
+
+                      var strtoken=apim.getvariable('message.body');
+
+                       
+
+                      if(strtoken)
+                      {
+                      var detail=strtoken.detail;
+                      context.message.header.set('detail',detail);
+                      }
+
+                       
+
+                      context.message.header.set('httpCode',code);
+
+                       
+
+                      context.message.header.set('httpMessage',msg);
+                - map:
+                    version: 2.0.0
+                    title: map
+                    inputs:
+                      code:
+                        schema:
+                          type: string
+                        variable: message.headers.httpCode
+                      message:
+                        schema:
+                          type: string
+                        variable: message.headers.httpMessage
+                      details:
+                        schema:
+                          type: string
+                        variable: message.headers.detail
+                    outputs:
+                      output:
+                        schema:
+                          $ref: path/definitions/Error.yaml
+                        variable: message.body
+                        content: application/json
+                    actions:
+                      - set: output.httpCode
+                        from: code
+                      - set: output.httpMessage
+                        from: message
+                      - set: output.moreInformation
+                        from: details
+                - set-variable:
+                    version: 2.0.0
+                    title: set-variable
+                    actions:
+                      - clear: message.headers.httpCode
+                      - clear: message.headers.httpMessage
+                      - clear: message.headers.detail
+            - otherwise: []
+    catch:
+      - errors:
+          - Token_Error
+        execute:
+          - map:
+              version: 2.0.0
+              title: Map Token Error
+              inputs:
+                input:
+                  schema:
+                    $ref: path/definitions/Error.yaml
+                  variable: message.body
+                  content: application/json
+              outputs:
+                output:
+                  schema:
+                    $ref: path/definitions/Error.yaml
+                  variable: message.body
+                  content: application/json
+              actions:
+                - set: output.httpMessage
+                  value: '"Unauthorized"'
+                - set: output.httpCode
+                  value: '''401'''
+                - set: output.moreInformation
+                  from: input.moreInformation
+              options:
+                mapEnablePostProcessingJSON: false
+                mapEmulateV4EmptyJSONObject: false
+                mapEmulateV4DefaultRequiredProps: false
+                mapReferenceLimit: 1
+          - set-variable:
+              version: 2.0.0
+              title: Set Status Code
+              actions:
+                - set: message.status.code
+                  value: '401'
+                  type: string
+    finally: []
+  properties: {}
+  application-authentication:
+    certificate: false
+  activity-log:
+    success-content: payload
+    error-content: payload
+    enabled: true
+  buffering: true
+  catalogs: {}

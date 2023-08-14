@@ -1,0 +1,99 @@
+post:
+  tags:
+    - agency:group:workflow
+  summary: Request for unlinking a branch agency
+  description: Request for unlinking a branch agency
+  operationId: unLinkAgencyBranch
+  parameters:
+    - name: X-IBM-Client-Id
+      in: header
+      description: Unique System Identifier
+      required: true
+      schema:
+        type: string
+    - name: Authorization
+      in: header
+      description: Authentication Token
+      required: true
+      schema:
+        type: string
+    - name: agencyDid
+      in: path
+      description: Agency UID
+      required: true
+      schema:
+        type: string
+    - name: X-IBM-Client-Secret
+      in: header
+      description: Client Secret
+      schema:
+        type: string
+    - name: branchDid
+      in: path
+      description: Branch DID
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Client Secret
+    content:
+      application/json:
+        schema:
+          $ref: ..\components\schemas\AgencyGroupRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        '*/*':
+          schema:
+            $ref: ..\components\schemas\Agency.yaml
+    '400':
+      description: Bad Request
+      content:
+        '*/*':
+          schema:
+            $ref: ..\components\schemas\Error.yaml
+    '401':
+      description: UnAuthorized
+      content:
+        '*/*':
+          schema:
+            $ref: ..\components\schemas\Error.yaml
+    '403':
+      description: Forbidden
+      content:
+        '*/*':
+          schema:
+            $ref: ..\components\schemas\Error.yaml
+    '404':
+      description: Not Found
+      content:
+        '*/*':
+          schema:
+            $ref: ..\components\schemas\Error.yaml
+    '405':
+      description: Method Not Allowed
+      content:
+        '*/*':
+          schema:
+            $ref: ..\components\schemas\Error.yaml
+    '422':
+      description: Unprocessable Entity
+      content:
+        '*/*':
+          schema:
+            $ref: ..\components\schemas\Error.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        '*/*':
+          schema:
+            $ref: ..\components\schemas\Error.yaml
+    '503':
+      description: Service Unavailable
+      content:
+        '*/*':
+          schema:
+            $ref: ..\components\schemas\Error.yaml
+  x-codegen-request-body-name: request

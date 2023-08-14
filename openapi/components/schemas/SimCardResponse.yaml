@@ -1,0 +1,11 @@
+type: object
+properties:
+  statusCode:
+    type: string
+    description: Status Code
+  statusType:
+    type: string
+    description: Status Type
+  statusDetails:
+    type: string
+    description: Status Details

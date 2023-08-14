@@ -1,0 +1,23 @@
+type: object
+properties:
+  label:
+    type: string
+    description: Phone Label
+    example: work
+  countryCode:
+    type: string
+    description: Country Code
+    example: 971
+  phone:
+    type: string
+    description: Phone
+    example: '43435353'
+  extension:
+    type: string
+    description: Extension
+    example: '1234'
+  preferred:
+    type: boolean
+    description: Preferred Phone Flag
+    example: true
+description: Phones

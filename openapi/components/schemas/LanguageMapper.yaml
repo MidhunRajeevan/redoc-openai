@@ -1,0 +1,10 @@
+type: object
+properties:
+  en:
+    type: string
+    description: Name in English
+    example: English
+  ar:
+    type: string
+    description: Name in Arabic
+    example: عربي
