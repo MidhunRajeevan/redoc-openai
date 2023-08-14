@@ -43,16 +43,9 @@
     </div>
     
     <!-- Redoc container -->
-    <div id="redoc-container"></div>
-    
-    <script>
-      // Initialize Redoc with your OpenAPI Specification
-      Redoc.init('dist.json', {
-        // Other configuration options
-      }, document.getElementById('redoc-container'));
-    </script>
-    
-    <!-- Redoc script -->
-    <script src="https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"></script>
+    <div>
+        <redoc spec-url='dist.json'></redoc>
+        <script src="https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"> </script>
+    </div>
   </body>
 </html>
