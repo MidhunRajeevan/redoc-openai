@@ -19587,7 +19587,7 @@
           }
         },
         "summary": "Create model",
-        "description": "### Description \n\nIdentifies the energy model (a.k.a. \"thermal signature\") of a building, i.e. the relation between its daily or monthly energy consumption and contextual information (weather + other drivers).\n\n",
+        "description": "Description \n\nIdentifies the energy model (a.k.a. \"thermal signature\") of a building, i.e. the relation between its daily or monthly energy consumption and contextual information (weather + other drivers).\n\n",
         "security": [
           {
             "api_key": []
@@ -19658,7 +19658,7 @@
           }
         },
         "summary": "Apply model",
-        "description": "### Description \n\nUses an existing model to predict the energy that a building would have consumed under given context/usage conditions represented by the provided dataset (containing weather and possibly other drivers). If the actual energy consumption is also provided in the dataset, savings can also be computed, as well as faults.\n",
+        "description": "Description \n\nUses an existing model to predict the energy that a building would have consumed under given context/usage conditions represented by the provided dataset (containing weather and possibly other drivers). If the actual energy consumption is also provided in the dataset, savings can also be computed, as well as faults.\n",
         "security": [
           {
             "api_key": []
@@ -19729,7 +19729,7 @@
           }
         },
         "summary": "Assess model quality for savings",
-        "description": "### Description \n\nYou may wish to use a model created with this component to measure future energy savings, for example after some retrofit operation. But you do not need the same level of quality from your model to measure 2% savings or 30% savings: a much more precise prediction is needed to measure small savings of 2% and be sure that this is not 'just noise'. Also, the shorter the assessment period will be, and the more precise you model needs to be. This service helps you to determine if your model is good enough to measure a given target of energy savings with a given confidence level, based on predictions made during a given number of days (assessment period).\n",
+        "description": "Description \n\nYou may wish to use a model created with this component to measure future energy savings, for example after some retrofit operation. But you do not need the same level of quality from your model to measure 2% savings or 30% savings: a much more precise prediction is needed to measure small savings of 2% and be sure that this is not 'just noise'. Also, the shorter the assessment period will be, and the more precise you model needs to be. This service helps you to determine if your model is good enough to measure a given target of energy savings with a given confidence level, based on predictions made during a given number of days (assessment period).\n",
         "security": [
           {
             "api_key": []
@@ -19800,7 +19800,7 @@
           }
         },
         "summary": "Get model information",
-        "description": "### Description \n\nRetrieves information about a previously created model. This service returns the exact same outputs as the `createModel` service.\n",
+        "description": "Description \n\nRetrieves information about a previously created model. This service returns the exact same outputs as the `createModel` service.\n",
         "security": [
           {
             "api_key": []
