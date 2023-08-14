@@ -19532,7 +19532,7 @@
     "version": "1.2.1",
     "description": {
       "$ref": "../md_files/README.md"
-    },
+    }
   },
   "paths": {
     "/create-model": {
